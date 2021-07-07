@@ -1,0 +1,118 @@
+import { Point } from "@nativescript/core/ui/core/view";
+
+/**
+ * Represent a pair of latitude and longitude coordinates, stored as degrees.
+ */
+export interface Coordinate {
+    /**
+     * Latitude, in degrees.
+     */
+    latitude: number;
+
+    /**
+     * Longitude, in degrees.
+     */
+    longitude: number;
+}
+
+/**
+ * Represent a latitude/longitude aligned rectangle.
+ */
+export interface CoordinateBounds {
+    /**
+     * Northeast corner of the bound.
+     */
+    northeast: Coordinate;
+
+    /**
+     * Southwest corner of the bound.
+     */
+    southwest: Coordinate;
+}
+
+/**
+ * Represent a aggregates all camera position parameters such as location, zoom level, tilt angle, and bearing.
+ */
+export interface CameraPosition {
+    /** 
+     * Sets the direction that the camera is pointing in, in degrees clockwise from north.
+     */
+    bearing?: number;
+
+    /**
+     * Sets the location that the camera is pointing at.
+     */
+    position?: Coordinate;
+
+    /**
+     * Sets the angle, in degrees, of the camera angle from the nadir (directly facing the Earth).
+     */
+    tilt?: number;
+
+    /**
+     * Sets zoom level near the center of the screen.
+     */
+    zoom?: number;
+}
+
+/**
+ * Contains the four points defining the four-sided polygon that is visible in a map's camera.
+ * This polygon can be a trapezoid instead of a rectangle, because a camera can have tilt.
+ * If the camera is directly over the center of the camera, the shape is rectangular,
+ * but if the camera is tilted, the shape will appear to be a trapezoid whose smallest side is closest to the point of view.
+ */
+export interface VisibleRegion {
+    /**
+     * Coordinate object that defines the far left corner of the camera.
+     */
+    farLeft: Coordinate;
+
+    /**
+     * Coordinate object that defines the far right corner of the camera.
+     */
+    farRight: Coordinate;
+
+    /**
+     * Coordinate object that defines the bottom left corner of the camera.
+     */
+    nearLeft: Coordinate;
+
+    /**
+     * Coordinate object that defines the bottom right corner of the camera.
+     */
+    nearRight: Coordinate;
+}
+
+/**
+ * Contains information about a PointOfInterest that was clicked on.
+ */
+export interface PointOfInterest {
+    /**
+     * The Coordinate of the POI.
+     */
+    location: Coordinate;
+
+    /**
+     * The name of the POI.
+     */
+    name: string;
+
+    /**
+     * The placeId of the POI.
+     */
+    placeId: string;
+}
+
+export function coordinatePropertyValueConverter(value: string): Coordinate {
+    const splitedValue = value.split(",");
+    if (splitedValue.length < 2) {
+        throw new Error("Invalid position property of GMapMarker");
+    }
+
+    return {
+        latitude: parseFloat(splitedValue[0]),
+        longitude: parseFloat(splitedValue[1])
+    };
+}
+
+export { Point };

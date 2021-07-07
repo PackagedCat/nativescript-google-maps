@@ -1,0 +1,10 @@
+*.map
+*.ts
+*.android.d.ts
+*.ios.d.ts
+*.common.d.ts
+*.tsbuildinfo
+!*.d.ts
+scripts/*
+platforms/android/*.aar
+.DS_Store
