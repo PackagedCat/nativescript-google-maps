@@ -1,8 +1,8 @@
 # GoogleMap
 
-[API](https://github.com/EddyVerbruggen/nativescript-feedback)
+[API](#API)
 
-[Examples](https://github.com/EddyVerbruggen/nativescript-feedback)
+[Examples](#Examples)
 
 
 ## API
@@ -220,6 +220,321 @@
   Gets or set the user interface settings for the map.
 </td>
 </tr>
+</table>
+
+### Events
+
+<table>
+
+<tr>
+<th>
+    Name
+</th>
+<th>
+    Data
+</th>
+<th>
+    Description
+</th>
+</tr>
+
+<tr>
+<td>
+  cameraIdle
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraMove
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraMoveCanceled
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraMoveStart
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  mapReady
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  mapTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  mapLoaded
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  mapLongTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  markerTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  markerDrag
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  markerDragEnd
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  markerDragStart
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  circleTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  polygonTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  polylineTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  poiTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  groundOverlayTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  myLocationButtonTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  myLocationTap
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraIdle
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraMove
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraMoveCanceled
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
+<tr>
+<td>
+  cameraMoveStart
+</td>
+<td>
+  
+</td>
+<td>
+  
+</td>
+</tr>
+
 </table>
 
 ## Examples

@@ -219,7 +219,7 @@ export class GoogleMap {
 
     on(eventName: "mapReady", callback: (args: EventData) => void, thisArg?: any);
     on(eventName: "mapTap", callback: (args: EventData) => void, thisArg?: any);
-    on(eventName: "mapLoadedEvent", callback: (args: EventData) => void, thisArg?: any);
+    on(eventName: "mapLoaded", callback: (args: EventData) => void, thisArg?: any);
     on(eventName: "mapLongTap", callback: (args: EventData) => void, thisArg?: any);
 
     on(eventName: "markerTap", callback: (args: MapObjectEventData<Marker>) => void, thisArg?: any);
@@ -243,7 +243,7 @@ export class GoogleMap {
 
     off(eventName: "mapReady", callback: (args: EventData) => void, thisArg?: any);
     off(eventName: "mapTap", callback: (args: EventData) => void, thisArg?: any);
-    off(eventName: "mapLoadedEvent", callback: (args: EventData) => void, thisArg?: any);
+    off(eventName: "mapLoaded", callback: (args: EventData) => void, thisArg?: any);
     off(eventName: "mapLongTap", callback: (args: EventData) => void, thisArg?: any);
 
     off(eventName: "markerTap", callback: (args: MapObjectEventData<Marker>) => void, thisArg?: any);
