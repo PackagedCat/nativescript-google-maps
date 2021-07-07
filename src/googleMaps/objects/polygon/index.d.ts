@@ -28,7 +28,7 @@ export class Polygon extends PolygonBase {
 	 * Indicates whether the segments of the polygon should be drawn as geodesics, 
      * as opposed to straight lines on the Mercator projection. 
      * A geodesic is the shortest path between two points on the Earth's surface.
-     * The geodesic curve is constructed assuming the Earth is a sphere
+     * The geodesic curve is constructed assuming the Earth is a sphere.
 	 */
 	public isGeodesic: boolean;
 

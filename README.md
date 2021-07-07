@@ -1,5 +1,7 @@
 # A Google Maps Plugin for NativeScript
 
+## WORK IN PROGRESS!
+
 Add your plugin badges here. See [nativescript-urlhandler](https://github.com/hypery2k/nativescript-urlhandler) for example.
 
 Then describe what's the purpose of your plugin. 
@@ -9,7 +11,7 @@ In case you develop UI plugin, this is where you can add some screenshots.
 ## Installation
 
 ```javascript
-ns plugin add nativescript-google-maps
+ns plugin add nativescript-gmaps
 ```
 
 Setting the Google Maps API key
@@ -103,19 +105,17 @@ export default Vue.extend({
 
 ## API & Examples
 
-[GoogleMap](https://github.com/EddyVerbruggen/nativescript-feedback)
+[GoogleMap](./docs/GoogleMaps.md)
 
-[Circle](https://github.com/EddyVerbruggen/nativescript-feedback)
+[Circle](./docs/Circle.md)
 
-[GroundOverlay](https://github.com/EddyVerbruggen/nativescript-feedback)
+[GroundOverlay](./docs/GroundOverlay.md)
 
-[Marker](https://github.com/EddyVerbruggen/nativescript-feedback)
+[Marker](./docs/Marker.md)
 
-[Polygon](https://github.com/EddyVerbruggen/nativescript-feedback)
+[Polygon](./docs/Polygon.md)
 
-[Polyline](https://github.com/EddyVerbruggen/nativescript-feedback)
-
-[TileOverlay](https://github.com/EddyVerbruggen/nativescript-feedback)
+[Polyline](./docs/Polyline.md)
     
 ## License
 

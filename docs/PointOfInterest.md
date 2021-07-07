@@ -1,4 +1,4 @@
-# VisibleRegion
+# PointOfInterest
 
 Contains information about a PointOfInterest that was clicked on.
 

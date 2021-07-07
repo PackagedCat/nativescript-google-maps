@@ -35,7 +35,7 @@ export class Marker extends MarkerBase {
 	 * @summary
 	 * If the marker is flat against the map, it will remain stuck to the map as the camera rotates and tilts but
 	 * will still remain the same size as the camera zooms, unlike a GroundOverlay. If the marker is a billboard,
-	 * it will always be drawn facing the camera and will rotate and tilt with the camera. The default is a billboard (false)
+	 * it will always be drawn facing the camera and will rotate and tilt with the camera. The default is a billboard (false).
 	 */
 	public isFlat: boolean;
 

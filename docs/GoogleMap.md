@@ -23,10 +23,7 @@
 </tr>
 <tr>
 <td>
-
-  ```typescript
-  cameraPosition: CameraPosition;
-  ```
+  <pre><code>cameraPosition: <a href="./CameraPosition.md">CameraPosition</a>;</code></pre>
 </td>
 <td>
 
@@ -143,7 +140,6 @@
 </td>
 <td>
 
-  `false`
 </td>
 <td>
   Gets or sets the styling of the base map.
@@ -151,10 +147,7 @@
 </tr>
 <tr>
 <td>
-
-  ```typescript
-  mapType: MapType;
-  ```
+  <pre><code>mapType: <a href="./MapType.md">MapType</a>;</code></pre>
 </td>
 <td>
 
@@ -205,10 +198,7 @@
 </tr>
 <tr>
 <td>
-
-  ```typescript
-  uiSettings: UiSettings;
-  ```
+  <pre><code>uiSettings: <a href="./Projection.md">UiSettings</a>;</code></pre>
 </td>
 <td>
   
@@ -228,27 +218,6 @@
 </td>
 <td>
   Gets or set the user interface settings for the map.
-</td>
-</tr>
-</table>
-
-### Methods
-
-<table>
-<tr>
-<th>
-  Name
-</th>
-<th>
-  Description
-</th>
-</tr>
-<tr>
-<td>
-  clear();
-</td>
-<td>
-  Removes all markers, polylines, polygons, overlays, etc from the map.
 </td>
 </tr>
 </table>
@@ -277,11 +246,11 @@
 <template>
     <Page>
         <GridLayout>
-            <GoogleMap
+            <GMap
                 :cameraPosition="cameraPosition">
                 <GMapMarker
                     :position="markerPosition"/>
-            </GoogleMap>
+            </GMap>
         </GridLayout>
     </Page>
 </template>
