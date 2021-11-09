@@ -1,6 +1,4 @@
-import * as Common from "../../common";
-
- export class TileOverlay extends Common.MapObject {
+export class TileOverlay {
     /**
      * Gets or sets the visibility of this tile overlay.
      */

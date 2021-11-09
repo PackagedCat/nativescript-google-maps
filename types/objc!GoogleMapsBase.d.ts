@@ -1,9 +1,9 @@
 
 declare class GMSCoordinateBounds extends NSObject {
 
-	static alloc(): GMSCoordinateBounds; // inherited from NSObject
+    static alloc(): GMSCoordinateBounds; // inherited from NSObject
 
-	static new(): GMSCoordinateBounds; // inherited from NSObject
+    static new(): GMSCoordinateBounds; // inherited from NSObject
 
 	readonly northEast: CLLocationCoordinate2D;
 

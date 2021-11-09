@@ -1,10 +1,10 @@
 import { booleanConverter, Property } from "@nativescript/core";
-import * as Common from "../../common";
+import { MapObjectBase } from "../mapObjectBase";
 
 /**
  * Represents a class of title overlay is a collection of images that are displayed on top of the base map tiles.
  */
-export abstract class TileOverlayBase extends Common.MapObject {
+export abstract class TileOverlayBase extends MapObjectBase {
     protected _tileProvider: (x: number, y: number, zoom: number) => string | null;
 
     /**
@@ -40,29 +40,29 @@ export abstract class TileOverlayBase extends Common.MapObject {
 }
 
 export const isVisibleProperty = new Property<TileOverlayBase, boolean>({
-	name: "isVisible",
-	defaultValue: true,
-	valueConverter: booleanConverter,
+    name: "isVisible",
+    defaultValue: true,
+    valueConverter: booleanConverter,
 });
 isVisibleProperty.register(TileOverlayBase);
 
 export const opacityProperty = new Property<TileOverlayBase, number>({
-	name: "opacity",
-	defaultValue: 1,
-	valueConverter: parseFloat,
+    name: "opacity",
+    defaultValue: 1,
+    valueConverter: parseFloat,
 });
 opacityProperty.register(TileOverlayBase);
 
 export const sizeProperty = new Property<TileOverlayBase, number>({
-	name: "size",
-	defaultValue: 256,
-	valueConverter: (v) => parseInt(v),
+    name: "size",
+    defaultValue: 256,
+    valueConverter: (v) => parseInt(v),
 });
 sizeProperty.register(TileOverlayBase);
 
 export const zIndexProperty = new Property<TileOverlayBase, number>({
-	name: "zIndex",
-	defaultValue: 0,
-	valueConverter: (v) => parseInt(v),
+    name: "zIndex",
+    defaultValue: 0,
+    valueConverter: (v) => parseInt(v),
 });
 zIndexProperty.register(TileOverlayBase);

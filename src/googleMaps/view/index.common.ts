@@ -8,8 +8,34 @@ import {
     View
 } from "@nativescript/core";
 import { KeyedTemplate, Template } from "@nativescript/core/ui/core/view";
-import * as Common from "../../common";
+import { Coordinate, coordinatePropertyValueConverter } from "../models";
+import { MapObjectBase } from "../objects/mapObjectBase";
 import { Projection } from "../projection";
+
+/**
+ * Represent a aggregates all camera position parameters such as location, zoom level, tilt angle, and bearing.
+ */
+export interface CameraPosition {
+    /** 
+     * Sets the direction that the camera is pointing in, in degrees clockwise from north.
+     */
+    bearing?: number;
+
+    /**
+     * Sets the location that the camera is pointing at.
+     */
+    position?: Coordinate;
+
+    /**
+     * Sets the angle, in degrees, of the camera angle from the nadir (directly facing the Earth).
+     */
+    tilt?: number;
+
+    /**
+     * Sets zoom level near the center of the screen.
+     */
+    zoom?: number;
+}
 
 export interface MapObjectEventData<T> extends EventData {
     mapObject: T;
@@ -124,7 +150,7 @@ export abstract class GoogleMapBase extends View {
 	// TODO: get rid of such hacks.
 	public static knownFunctions = ["infoWindowTemplateSelector", "itemIdGenerator"]; //See component-builder.ts isKnownFunction
     
-    protected _mapObjects = new Array<Common.MapObject>();
+    protected _mapObjects = new Array<MapObjectBase>();
 
     // Android only: Need for await map initialization
     // to set properties of google map and map objects
@@ -136,15 +162,15 @@ export abstract class GoogleMapBase extends View {
     //#region Info window templates
 
     public _defaultInfoWindowTemplate: KeyedTemplate = {
-		key: "default",
-		createView: () => {
-			if (this.infoWindowTemplate) {
-				return Builder.parse(this.infoWindowTemplate, this);
-			}
+        key: "default",
+        createView: () => {
+            if (this.infoWindowTemplate) {
+                return Builder.parse(this.infoWindowTemplate, this);
+            }
 
-			return undefined;
-		},
-	};
+            return undefined;
+        },
+    };
 
 	public _infoWindowTemplatesInternal = new Array<KeyedTemplate>(this._defaultInfoWindowTemplate);
 	private _infoWindowTemplateSelector: (item: any, index: number, items: any) => string;
@@ -152,38 +178,38 @@ export abstract class GoogleMapBase extends View {
 	private _itemIdGenerator: (item: any, index: number, items: any) => number = (_item: any, index: number) => index;
     
 	public get itemIdGenerator(): (item: any, index: number, items: any) => number {
-		return this._itemIdGenerator;
+	    return this._itemIdGenerator;
 	}
 
 	public set itemIdGenerator(generatorFn: (item: any, index: number, items: any) => number) {
-		this._itemIdGenerator = generatorFn;
+	    this._itemIdGenerator = generatorFn;
 	}
 
 	public get infoWindowTemplateSelector(): string | ((item: any, index: number, items: any) => string) {
-		return this._infoWindowTemplateSelector;
+	    return this._infoWindowTemplateSelector;
 	}
 
 	public set infoWindowTemplateSelector(value: string | ((item: any, index: number, items: any) => string)) {
-		if (typeof value === "string") {
-			this._infoWindowTemplateSelectorBindable.bind({
-				sourceProperty: null,
-				targetProperty: "templateKey",
-				expression: value,
-			});
-			this._infoWindowTemplateSelector = (item: any, index: number, items: any) => {
-				item["$index"] = index;
+	    if (typeof value === "string") {
+	        this._infoWindowTemplateSelectorBindable.bind({
+	            sourceProperty: null,
+	            targetProperty: "templateKey",
+	            expression: value,
+	        });
+	        this._infoWindowTemplateSelector = (item: any, index: number) => {
+	            item["$index"] = index;
 
-				if (this._infoWindowTemplateSelectorBindable.bindingContext === item) {
-					this._infoWindowTemplateSelectorBindable.bindingContext = null;
-				}
+	            if (this._infoWindowTemplateSelectorBindable.bindingContext === item) {
+	                this._infoWindowTemplateSelectorBindable.bindingContext = null;
+	            }
 
-				this._infoWindowTemplateSelectorBindable.bindingContext = item;
+	            this._infoWindowTemplateSelectorBindable.bindingContext = item;
 
-				return this._infoWindowTemplateSelectorBindable.get("templateKey");
-			};
-		} else if (typeof value === "function") {
-			this._infoWindowTemplateSelector = value;
-		}
+	            return this._infoWindowTemplateSelectorBindable.get("templateKey");
+	        };
+	    } else if (typeof value === "function") {
+	        this._infoWindowTemplateSelector = value;
+	    }
 	}
 
 	// private _getDataItem(index: number): any {
@@ -214,12 +240,12 @@ export abstract class GoogleMapBase extends View {
 	// 	}
 	// }
 
-    //#endregion
+	//#endregion
 
     /**
      * Gets or sets the current position of the camera.
      */
-    public cameraPosition: Common.CameraPosition;
+    public cameraPosition: CameraPosition;
 
     /**
      * Removes all markers, polylines, polygons, overlays, etc from the map.
@@ -244,7 +270,7 @@ export abstract class GoogleMapBase extends View {
     /**
      * Animates the movement of the camera
      */
-    public isCameraAnimationEnabled: boolean = true;
+    public isCameraAnimationEnabled = true;
 
     /**
      * Gets or sets the value whether indoor maps are currently enabled.
@@ -307,19 +333,19 @@ export abstract class GoogleMapBase extends View {
         });
     }
 
-	public _addChildFromBuilder(name: string, value: any) {
+    public _addChildFromBuilder(name: string, value: any) {
         // Adding Placeholder need for Vue where if no items exists in <template>
         // than it replaces that place with Placeholder
-        if (value instanceof Placeholder || value instanceof Common.MapObject) {
+        if (value instanceof Placeholder || value instanceof MapObjectBase) {
             this._addView(value);
         }
 
-		if (value instanceof Common.MapObject) {
+        if (value instanceof MapObjectBase) {
             this._mapObjects.push(value);
-		}
+        }
     }
 
-    public _removeViewFromNativeVisualTree(view: Common.MapObject) {
+    public _removeViewFromNativeVisualTree(view: MapObjectBase) {
         super._removeViewFromNativeVisualTree(view);
         for (let i = 0; i < this._mapObjects.length; i++) {
             const mapObject = this._mapObjects[i];
@@ -330,7 +356,7 @@ export abstract class GoogleMapBase extends View {
         }
     }
     
-    public eachChild(callback: (child: Common.MapObject) => boolean) {
+    public eachChild(callback: (child: MapObjectBase) => boolean) {
         for (const child of this._mapObjects) {
             if (!callback(child)) {
                 break;
@@ -346,8 +372,8 @@ export abstract class GoogleMapBase extends View {
 }
 
 /** Represents the camera position property of each GoogleMap instance. */
-export const cameraPositionProperty = new Property<GoogleMapBase, Common.CameraPosition>({
-	name: "cameraPosition",
+export const cameraPositionProperty = new Property<GoogleMapBase, CameraPosition>({
+    name: "cameraPosition",
     defaultValue: {
         position: {
             latitude: 0,
@@ -355,9 +381,9 @@ export const cameraPositionProperty = new Property<GoogleMapBase, Common.CameraP
         },
         zoom: 0
     },
-	valueConverter: (value) => {
+    valueConverter: (value) => {
         return {
-            position: Common.coordinatePropertyValueConverter(value)
+            position: coordinatePropertyValueConverter(value)
         };
     }
 });
@@ -365,75 +391,75 @@ cameraPositionProperty.register(GoogleMapBase);
 
 /** Represents the content description property of each GoogleMap instance. */
 export const contentDescriptionProperty = new Property<GoogleMapBase, string>({
-	name: "contentDescription"
+    name: "contentDescription"
 });
 contentDescriptionProperty.register(GoogleMapBase);
 
 /** Represents the ambient enabled property of each GoogleMap instance. Using just for converting value. */
 export const isAmbientEnabledProperty = new Property<GoogleMapBase, boolean>({
-	name: "isAmbientEnabled",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isAmbientEnabled",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isAmbientEnabledProperty.register(GoogleMapBase);
 
 /** Represents the buildings enabled property of each GoogleMap instance. */
 export const isBuildingsEnabledProperty = new Property<GoogleMapBase, boolean>({
-	name: "isBuildingsEnabled",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isBuildingsEnabled",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isBuildingsEnabledProperty.register(GoogleMapBase);
 
 /** Represents the camera animation enabled property of each GoogleMap instance. */
 export const isCameraAnimationEnabledProperty = new Property<GoogleMapBase, boolean>({
-	name: "isCameraAnimationEnabled",
-	defaultValue: true,
-	valueConverter: booleanConverter,
+    name: "isCameraAnimationEnabled",
+    defaultValue: true,
+    valueConverter: booleanConverter,
 });
 isCameraAnimationEnabledProperty.register(GoogleMapBase);
 
 /** Represents the indoor enabled property of each GoogleMap instance. */
 export const isIndoorEnabledProperty = new Property<GoogleMapBase, boolean>({
-	name: "isIndoorEnabled",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isIndoorEnabled",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isIndoorEnabledProperty.register(GoogleMapBase);
 
 /** Represents the my location enabled property of each GoogleMap instance. */
 export const isMyLocationEnabledProperty = new Property<GoogleMapBase, boolean>({
-	name: "isMyLocationEnabled",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isMyLocationEnabled",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isMyLocationEnabledProperty.register(GoogleMapBase);
 
 /** Represents the traffic enabled property of each GoogleMap instance. */
 export const isTrafficEnabledProperty = new Property<GoogleMapBase, boolean>({
-	name: "isTrafficEnabled",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isTrafficEnabled",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isTrafficEnabledProperty.register(GoogleMapBase);
 
 /**
  * Represents the item template property of each GoogleMap instance.
  */
- export const infoWindowTemplateProperty = new Property<GoogleMapBase, Template>({
-	name: "infoWindowTemplate"
+export const infoWindowTemplateProperty = new Property<GoogleMapBase, Template>({
+    name: "infoWindowTemplate"
 });
 infoWindowTemplateProperty.register(GoogleMapBase);
 
 /** Represents the info window template property of each GoogleMap instance. */
 export const infoWindowTemplatesProperty = new Property<GoogleMapBase, Array<KeyedTemplate>>({
-	name: "infoWindowTemplates"
+    name: "infoWindowTemplates"
 });
 infoWindowTemplatesProperty.register(GoogleMapBase);
 
 /** Represents the content description property of each GoogleMap instance. */
 export const mapStyleProperty = new Property<GoogleMapBase, string>({
-	name: "mapStyle"
+    name: "mapStyle"
 });
 mapStyleProperty.register(GoogleMapBase);
 
@@ -441,29 +467,29 @@ mapStyleProperty.register(GoogleMapBase);
 export const mapTypeProperty = new Property<GoogleMapBase, MapType>({
     name: "mapType",
     defaultValue: MapType.normal,
-	valueConverter: (value) => MapType[value.toLowerCase()]
+    valueConverter: (value) => MapType[value.toLowerCase()]
 });
 mapTypeProperty.register(GoogleMapBase);
 
 /** Represents the maximal zoom level property of each GoogleMap instance. */
 export const maxZoomLevelProperty = new Property<GoogleMapBase, number>({
-	name: "maxZoomLevel",
+    name: "maxZoomLevel",
     defaultValue: 21,
-	valueConverter: parseFloat
+    valueConverter: parseFloat
 });
 maxZoomLevelProperty.register(GoogleMapBase);
 
 /** Represents the minimal zoom level property of each GoogleMap instance. */
 export const minZoomLevelProperty = new Property<GoogleMapBase, number>({
-	name: "minZoomLevel",
+    name: "minZoomLevel",
     defaultValue: 0,
-	valueConverter: parseFloat
+    valueConverter: parseFloat
 });
 minZoomLevelProperty.register(GoogleMapBase);
 
 /** Represents the UI settings property of each GoogleMap instance. */
 export const uiSettingsProperty = new Property<GoogleMapBase, UiSettings>({
-	name: "uiSettings",
+    name: "uiSettings",
     defaultValue: {
         isCompassEnabled: false,
         isIndoorLevelPickerEnabled: false,

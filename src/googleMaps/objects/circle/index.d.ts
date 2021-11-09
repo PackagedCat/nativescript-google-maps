@@ -1,11 +1,10 @@
 import { Color } from "@nativescript/core";
-import { CircleBase } from "./index.common";
-import * as Models from "../Common/Models";
+import { Coordinate } from "../../models";
 
 /**
  * Represents a circle on the earth's surface (spherical cap).
  */
- export class Circle extends CircleBase {
+export class Circle {
     /**
      * Gets or sets the interior of the circle is painted with fillColor.
      */
@@ -24,7 +23,7 @@ import * as Models from "../Common/Models";
 	/**
 	 * Gets or sets the position on Earth of circle center.
 	 */
-    public position: Common.Coordinate;
+    public position: Coordinate;
 
     /**
      * Gets or sets the radius of the circle in meters; must be positive.

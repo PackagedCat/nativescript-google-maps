@@ -9,7 +9,7 @@ import {
     zIndexProperty
 } from "./index.common";
 import { Color } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Circle extends CircleBase {
     public nativeMapObject: GMSCircle;
@@ -22,9 +22,9 @@ export class Circle extends CircleBase {
         this.nativeMapObject.map = null;
     }
 
-	[fillColorProperty.setNative](value: Color) {
+    [fillColorProperty.setNative](value: Color) {
         this.nativeMapObject.fillColor = value.ios;
-	}
+    }
     
     [isTappableProperty.setNative](value: boolean) {
         this.nativeMapObject.tappable = value;
@@ -34,19 +34,19 @@ export class Circle extends CircleBase {
         this.nativeMapObject.map = value ? this.parent.nativeView : null;
     }
     
-	[positionProperty.setNative](value: Common.Coordinate) {
+    [positionProperty.setNative](value: Coordinate) {
         this.nativeMapObject.position = value;
-	}
+    }
 
-	[strokeColorProperty.setNative](value: Color) {
+    [strokeColorProperty.setNative](value: Color) {
         this.nativeMapObject.strokeColor = value.ios;
-	}
+    }
 
-	[strokeWidthProperty.setNative](value: number) {
+    [strokeWidthProperty.setNative](value: number) {
         this.nativeMapObject.strokeWidth = value;
-	}
+    }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         this.nativeMapObject.zIndex = value;
-	}
+    }
 }

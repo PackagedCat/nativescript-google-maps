@@ -1,8 +1,8 @@
 import { booleanConverter, Color, ImageAsset, ImageSource, Property } from "@nativescript/core";
-import { Point } from "@nativescript/core/ui/core/view";
-import * as Common from "../../common";
+import { MapObjectBase } from "../mapObjectBase";
+import { Coordinate, coordinatePropertyValueConverter, Point } from "../../models";
 
-export abstract class MarkerBase extends Common.MapObject {
+export abstract class MarkerBase extends MapObjectBase {
 	/** 
 	 * Sets the anchor point for the marker.
 	 * 
@@ -54,9 +54,9 @@ export abstract class MarkerBase extends Common.MapObject {
 	/**
 	 * Gets or sets the position of the marker.
 	 */
-	public position: Common.Coordinate;
+	public position: Coordinate;
 
-    /**
+	/**
      * Gets or sets the value indicates that the default behavior should not occur.
 	 * 
 	 * @summary
@@ -109,10 +109,36 @@ export abstract class MarkerBase extends Common.MapObject {
     // TODO: showInfoWindow();
 }
 
+export const anchorProperty = new Property<MarkerBase, Point>({
+    name: "anchor",
+    defaultValue: {
+        x: 0,
+        y: 0
+    },
+    equalityComparer: (point1, point2) => {
+        return point1.x == point1.x && point1.y == point2.y;
+    },
+    valueConverter: (v) => {
+        const splitedValue = v.split(",");
+        if (splitedValue.length > 1) {
+            return {
+                x: parseFloat(splitedValue[0]),
+                y: parseFloat(splitedValue[1])
+            };
+        }
+
+        return {
+            x: 0,
+            y: 0
+        };
+    },
+});
+anchorProperty.register(MarkerBase);
+
 export const defaultIconColorProperty = new Property<MarkerBase, Color>({
-	name: "defaultIconColor",
-	equalityComparer: Color.equals,
-	valueConverter: (v) => new Color(v),
+    name: "defaultIconColor",
+    equalityComparer: Color.equals,
+    valueConverter: (v) => new Color(v),
 });
 defaultIconColorProperty.register(MarkerBase);
 
@@ -122,70 +148,70 @@ export const iconProperty = new Property<MarkerBase, any>({
 iconProperty.register(MarkerBase);
 
 export const isDraggableProperty = new Property<MarkerBase, boolean>({
-	name: "isDraggable",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isDraggable",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isDraggableProperty.register(MarkerBase);
 
 export const isFlatProperty = new Property<MarkerBase, boolean>({
-	name: "isFlat",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isFlat",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isFlatProperty.register(MarkerBase);
 
 export const isVisibleProperty = new Property<MarkerBase, boolean>({
-	name: "isVisible",
-	defaultValue: true,
-	valueConverter: booleanConverter,
+    name: "isVisible",
+    defaultValue: true,
+    valueConverter: booleanConverter,
 });
 isVisibleProperty.register(MarkerBase);
 
 export const opacityProperty = new Property<MarkerBase, number>({
-	name: "opacity",
-	defaultValue: 1,
-	valueConverter: parseFloat,
+    name: "opacity",
+    defaultValue: 1,
+    valueConverter: parseFloat,
 });
 opacityProperty.register(MarkerBase);
 
-export const positionProperty = new Property<MarkerBase, Common.Coordinate>({
-	name: "position",
-	defaultValue: {
+export const positionProperty = new Property<MarkerBase, Coordinate>({
+    name: "position",
+    defaultValue: {
         latitude: 0,
         longitude: 0
     },
-    valueConverter: Common.coordinatePropertyValueConverter
+    valueConverter: coordinatePropertyValueConverter
 });
 positionProperty.register(MarkerBase);
 
 export const preventDefaultBehaviorProperty = new Property<MarkerBase, boolean>({
-	name: "preventDefaultBehavior",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "preventDefaultBehavior",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 preventDefaultBehaviorProperty.register(MarkerBase);
 
 export const rotationProperty = new Property<MarkerBase, number>({
-	name: "rotation",
-	defaultValue: 0,
-	valueConverter: (v) => parseFloat(v),
+    name: "rotation",
+    defaultValue: 0,
+    valueConverter: (v) => parseFloat(v),
 });
 rotationProperty.register(MarkerBase);
 
 export const snippetProperty = new Property<MarkerBase, string>({
-	name: "snippet"
+    name: "snippet"
 });
 snippetProperty.register(MarkerBase);
 
 export const titleProperty = new Property<MarkerBase, string>({
-	name: "title"
+    name: "title"
 });
 titleProperty.register(MarkerBase);
 
 export const zIndexProperty = new Property<MarkerBase, number>({
-	name: "zIndex",
-	defaultValue: 0,
-	valueConverter: (v) => parseInt(v),
+    name: "zIndex",
+    defaultValue: 0,
+    valueConverter: (v) => parseInt(v),
 });
 zIndexProperty.register(MarkerBase);

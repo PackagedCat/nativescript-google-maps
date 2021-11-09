@@ -10,7 +10,7 @@ import {
 } from "./index.common";
 import * as Converters from "../../converters/converters.android";
 import { Color } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Circle extends CircleBase {
     public nativeMapObject: com.google.android.gms.maps.model.Circle;
@@ -35,11 +35,11 @@ export class Circle extends CircleBase {
         });
     }
 
-	[fillColorProperty.setNative](value: Color) {
+    [fillColorProperty.setNative](value: Color) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setFillColor(value.android);
         }
-	}
+    }
     
     [isTappableProperty.setNative](value: boolean) {
         if (this.nativeMapObject != null) {
@@ -53,27 +53,27 @@ export class Circle extends CircleBase {
         }
     }
     
-	[positionProperty.setNative](value: Common.Coordinate) {
+    [positionProperty.setNative](value: Coordinate) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setCenter(Converters.coordinateToNativeLatLng(value));
         }
-	}
+    }
 
-	[strokeColorProperty.setNative](value: Color) {
+    [strokeColorProperty.setNative](value: Color) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setStrokeColor(value.android);
         }
-	}
+    }
 
-	[strokeWidthProperty.setNative](value: number) {
+    [strokeWidthProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setStrokeWidth(value);
         }
-	}
+    }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setZIndex(value);
         }
-	}
+    }
 }

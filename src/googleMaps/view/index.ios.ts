@@ -11,9 +11,10 @@ import {
     isIndoorEnabledProperty,
     isMyLocationEnabledProperty,
     isTrafficEnabledProperty,
-    mapStyleProperty
+    mapStyleProperty,
+    CameraPosition
 } from "./index.common";
-import * as Common from "../../common";
+import { PointOfInterest } from "../models";
 import { Projection } from "../projection";
 
 export * from "./index.common";
@@ -24,11 +25,11 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
     public static ObjCProtocols = [GMSMapViewDelegate];
     private _owner: WeakRef<GoogleMap>;
 
-	public static initWithOwner(owner: WeakRef<GoogleMap>): GoogleMapDelegateImpl {
-		const handler = <GoogleMapDelegateImpl>GoogleMapDelegateImpl.new();
-		handler._owner = owner;
+    public static initWithOwner(owner: WeakRef<GoogleMap>): GoogleMapDelegateImpl {
+        const handler = <GoogleMapDelegateImpl>GoogleMapDelegateImpl.new();
+        handler._owner = owner;
 
-		return handler;
+        return handler;
     }
     
     private mapObjectCallback(eventName, nativeMapObject) {
@@ -44,7 +45,7 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         });
     }
     
-	didTapMyLocationButtonForMapView(mapView: GMSMapView): boolean {
+    didTapMyLocationButtonForMapView(): boolean {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -58,11 +59,11 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         return true;
     }
 
-	mapViewDidBeginDraggingMarker(mapView: GMSMapView, marker: GMSMarker): void {
+    mapViewDidBeginDraggingMarker(mapView: GMSMapView, marker: GMSMarker): void {
         this.mapObjectCallback(GoogleMap.markerDragStartEvent, marker);
     }
 
-	mapViewDidChangeCameraPosition(mapView: GMSMapView, position: GMSCameraPosition): void {
+    mapViewDidChangeCameraPosition(mapView: GMSMapView, position: GMSCameraPosition): void {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -75,19 +76,19 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         });
     }
 
-	// TOOD: mapViewDidCloseInfoWindowOfMarker(mapView: GMSMapView, marker: GMSMarker): void;
+    // TOOD: mapViewDidCloseInfoWindowOfMarker(mapView: GMSMapView, marker: GMSMarker): void;
 
-	mapViewDidDragMarker(mapView: GMSMapView, marker: GMSMarker): void {
+    mapViewDidDragMarker(mapView: GMSMapView, marker: GMSMarker): void {
         this.mapObjectCallback(GoogleMap.markerDragEvent, marker);
     }
 
-	mapViewDidEndDraggingMarker(mapView: GMSMapView, marker: GMSMarker): void {
+    mapViewDidEndDraggingMarker(mapView: GMSMapView, marker: GMSMarker): void {
         this.mapObjectCallback(GoogleMap.markerDragEndEvent, marker);
     }
 
-	// TODO: mapViewDidFinishTileRendering(mapView: GMSMapView): void;
+    // TODO: mapViewDidFinishTileRendering(mapView: GMSMapView): void;
 
-	mapViewDidLongPressAtCoordinate(mapView: GMSMapView, coordinate: CLLocationCoordinate2D): void {
+    mapViewDidLongPressAtCoordinate(mapView: GMSMapView, coordinate: CLLocationCoordinate2D): void {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -100,11 +101,11 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         });
     }
 
-	// TODO: mapViewDidLongPressInfoWindowOfMarker(mapView: GMSMapView, marker: GMSMarker): void;
+    // TODO: mapViewDidLongPressInfoWindowOfMarker(mapView: GMSMapView, marker: GMSMarker): void;
 
-	// TODO: mapViewDidStartTileRendering(mapView: GMSMapView): void;
+    // TODO: mapViewDidStartTileRendering(mapView: GMSMapView): void;
 
-	mapViewDidTapAtCoordinate(mapView: GMSMapView, coordinate: CLLocationCoordinate2D): void {
+    mapViewDidTapAtCoordinate(mapView: GMSMapView, coordinate: CLLocationCoordinate2D): void {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -117,14 +118,14 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         });
     }
 
-	// TODO: mapViewDidTapInfoWindowOfMarker?(mapView: GMSMapView, marker: GMSMarker): void;
+    // TODO: mapViewDidTapInfoWindowOfMarker?(mapView: GMSMapView, marker: GMSMarker): void;
 
-	mapViewDidTapMarker(mapView: GMSMapView, marker: GMSMarker): boolean {
+    mapViewDidTapMarker(mapView: GMSMapView, marker: GMSMarker): boolean {
         this.mapObjectCallback(GoogleMap.markerTapEvent, marker);
         return true;
     }
 
-	mapViewDidTapMyLocation(mapView: GMSMapView, location: CLLocationCoordinate2D): void {
+    mapViewDidTapMyLocation(mapView: GMSMapView, location: CLLocationCoordinate2D): void {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -138,9 +139,9 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
 
     }
 
-	// TODO: mapViewDidTapOverlay(mapView: GMSMapView, overlay: GMSOverlay): void;
+    // TODO: mapViewDidTapOverlay(mapView: GMSMapView, overlay: GMSOverlay): void;
 
-	mapViewDidTapPOIWithPlaceIDNameLocation(mapView: GMSMapView, placeID: string, name: string, location: CLLocationCoordinate2D): void {
+    mapViewDidTapPOIWithPlaceIDNameLocation(mapView: GMSMapView, placeID: string, name: string, location: CLLocationCoordinate2D): void {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -153,21 +154,21 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
                 location: location,
                 name: name,
                 placeId: placeID
-            } as Common.PointOfInterest
+            } as PointOfInterest
         });
     }
 
-	mapViewIdleAtCameraPosition(mapView: GMSMapView, position: GMSCameraPosition): void {
+    mapViewIdleAtCameraPosition(mapView: GMSMapView, position: GMSCameraPosition): void {
         this.mapViewDidChangeCameraPosition(mapView, position);
     }
 
-	// TODO: mapViewMarkerInfoContents(mapView: GMSMapView, marker: GMSMarker): UIView;
+    // TODO: mapViewMarkerInfoContents(mapView: GMSMapView, marker: GMSMarker): UIView;
 
-	// TODO: mapViewMarkerInfoWindow(mapView: GMSMapView, marker: GMSMarker): UIView;
+    // TODO: mapViewMarkerInfoWindow(mapView: GMSMapView, marker: GMSMarker): UIView;
 
-	// TODO: mapViewSnapshotReady(mapView: GMSMapView): void;
+    // TODO: mapViewSnapshotReady(mapView: GMSMapView): void;
 
-	// TODO: mapViewWillMove(mapView: GMSMapView, gesture: boolean): void;
+    // TODO: mapViewWillMove(mapView: GMSMapView, gesture: boolean): void;
 }
 
 export class GoogleMap extends GoogleMapBase {
@@ -187,7 +188,7 @@ export class GoogleMap extends GoogleMapBase {
         return nativeMap;
     }
     
-    private createNativeCameraPosition(cameraPosition: Common.CameraPosition) {
+    private createNativeCameraPosition(cameraPosition: CameraPosition) {
         return GMSCameraPosition.cameraWithLatitudeLongitudeZoomBearingViewingAngle(
             cameraPosition.position?.latitude ?? 0,
             cameraPosition.position?.longitude ?? 0,
@@ -229,7 +230,7 @@ export class GoogleMap extends GoogleMapBase {
         return new Projection(this.nativeView.projection);
     }
 
-	[cameraPositionProperty.setNative](value: Common.CameraPosition) {
+    [cameraPositionProperty.setNative](value: CameraPosition) {
         const cameraPosition = this.createNativeCameraPosition(value);
 
         if (this.isCameraAnimationEnabled) {
@@ -239,11 +240,11 @@ export class GoogleMap extends GoogleMapBase {
         }
     }
     
-	[mapStyleProperty.setNative](value: string) {
+    [mapStyleProperty.setNative](value: string) {
         this.nativeView.mapStyle = GMSMapStyle.styleWithJSONStringError(value);
     }
     
-	[mapTypeProperty.setNative](value: MapType) {
+    [mapTypeProperty.setNative](value: MapType) {
         if (value === MapType.none) {
             this.nativeView.mapType = GMSMapViewType.kGMSTypeNone;
         } else {
@@ -251,15 +252,15 @@ export class GoogleMap extends GoogleMapBase {
         }
     }
     
-	[maxZoomLevelProperty.setNative](value: number) {
+    [maxZoomLevelProperty.setNative](value: number) {
         this.nativeView.setMinZoomMaxZoom(this.minZoomLevel, value);
     }
     
-	[minZoomLevelProperty.setNative](value: number) {
+    [minZoomLevelProperty.setNative](value: number) {
         this.nativeView.setMinZoomMaxZoom(value, this.maxZoomLevel);
     }
 
-	[uiSettingsProperty.setNative](value: UiSettings) {
+    [uiSettingsProperty.setNative](value: UiSettings) {
         const nativeUiSettings = this.nativeView.settings;
 
         if (value.isCompassEnabled != null) {
@@ -291,19 +292,19 @@ export class GoogleMap extends GoogleMapBase {
         }
     }
     
-	[isBuildingsEnabledProperty.setNative](value: boolean) {
+    [isBuildingsEnabledProperty.setNative](value: boolean) {
         this.nativeView.buildingsEnabled = value;
     }
     
-	[isIndoorEnabledProperty.setNative](value: boolean) {
+    [isIndoorEnabledProperty.setNative](value: boolean) {
         this.nativeView.indoorEnabled  = value;
     }
     
-	[isMyLocationEnabledProperty.setNative](value: boolean) {
+    [isMyLocationEnabledProperty.setNative](value: boolean) {
         this.nativeView.myLocationEnabled = value;
     }
     
-	[isTrafficEnabledProperty.setNative](value: boolean) {
+    [isTrafficEnabledProperty.setNative](value: boolean) {
         this.nativeView.trafficEnabled = value;
     }
 }

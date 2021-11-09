@@ -11,7 +11,7 @@ import {
 } from "./index.common";
 import * as Converters from "../../converters/converters.android";
 import { Color, zIndexProperty } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Polygon extends PolygonBase {
     public nativeMapObject: com.google.android.gms.maps.model.Polygon;
@@ -58,7 +58,7 @@ export class Polygon extends PolygonBase {
         }
     }
 
-	[holesProperty.setNative](value: Common.Coordinate[][]) {
+    [holesProperty.setNative](value: Coordinate[][]) {
         if (this.nativeMapObject != null) {
             const nativeHoles = new java.util.ArrayList<java.util.ArrayList<com.google.android.gms.maps.model.LatLng>>();
             for (const hole of value) {
@@ -92,7 +92,7 @@ export class Polygon extends PolygonBase {
         }
     }
 
-	[pathProperty.setNative](value: Common.Coordinate[]) {
+    [pathProperty.setNative](value: Coordinate[]) {
         if (this.nativeMapObject != null) {
             const nativeLatLngs = new Array<com.google.android.gms.maps.model.LatLng>();
             for (const coordinate of value) {
@@ -103,21 +103,21 @@ export class Polygon extends PolygonBase {
         }
     }
 
-	[strokeColorProperty.setNative](value: Color) {
+    [strokeColorProperty.setNative](value: Color) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setStrokeColor(value.android);
         }
-	}
+    }
 
-	[strokeWidthProperty.setNative](value: number) {
+    [strokeWidthProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setStrokeWidth(value);
         }
-	}
+    }
     
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setZIndex(value);
         }
-	}
+    }
 }

@@ -1,4 +1,5 @@
 import {
+    anchorProperty,
     defaultIconColorProperty,
     iconProperty,
     isDraggableProperty,
@@ -13,7 +14,7 @@ import {
     zIndexProperty
 } from "./index.common";
 import { Color } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate, Point } from "../../models";
 
 export class Marker extends MarkerBase {
     public nativeMapObject: GMSMarker;
@@ -31,7 +32,11 @@ export class Marker extends MarkerBase {
         this.nativeMapObject.map = googleMap;
     }
     
-	[defaultIconColorProperty.setNative](value: Color) {
+    [anchorProperty.setNative](value: Point) {
+        this.nativeMapObject.groundAnchor = value;
+    }
+    
+    [defaultIconColorProperty.setNative](value: Color) {
         if (this.icon == null) {
             if (value == null) {
                 this.nativeMapObject.icon = null;
@@ -39,9 +44,9 @@ export class Marker extends MarkerBase {
                 this.nativeMapObject.icon = GMSMarker.markerImageWithColor(value.ios);
             }
         }
-	}
+    }
     
-	[iconProperty.setNative](value: any) {
+    [iconProperty.setNative](value: any) {
         const iconImage = this._getImage(value);
         iconImage.then((imageSource) => {{
             const scaledIcon = UIImage.alloc().initWithCGImageScaleOrientation(
@@ -53,13 +58,13 @@ export class Marker extends MarkerBase {
         }}).catch((reason) => {
             throw reason;
         });
-	}
+    }
     
-	[isDraggableProperty.setNative](value: boolean) {
+    [isDraggableProperty.setNative](value: boolean) {
         this.nativeMapObject.draggable = value;
-	}
+    }
     
-	[isFlatProperty.setNative](value: boolean) {
+    [isFlatProperty.setNative](value: boolean) {
         this.nativeMapObject.flat = value;
     }
     
@@ -67,27 +72,27 @@ export class Marker extends MarkerBase {
         this.nativeMapObject.map = value ? this.parent.nativeView : null;
     }
     
-	[opacityProperty.setNative](value: number) {
+    [opacityProperty.setNative](value: number) {
         this.nativeMapObject.opacity = value;
     }
     
-	[positionProperty.setNative](value: Common.Coordinate) {
+    [positionProperty.setNative](value: Coordinate) {
         this.nativeMapObject.position = value;
-	}
+    }
     
-	[rotationProperty.setNative](value: number) {
+    [rotationProperty.setNative](value: number) {
         this.nativeMapObject.rotation = value;
-	}
+    }
     
-	[snippetProperty.setNative](value: string) {
+    [snippetProperty.setNative](value: string) {
         this.nativeMapObject.snippet = value;
-	}
+    }
     
-	[titleProperty.setNative](value: string) {
+    [titleProperty.setNative](value: string) {
         this.nativeMapObject.title = value;
-	}
+    }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         this.nativeMapObject.zIndex = value;
-	}
+    }
 }

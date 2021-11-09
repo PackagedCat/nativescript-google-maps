@@ -1,33 +1,38 @@
 import { EventData, GestureTypes } from "@nativescript/core";
-import { CameraPosition, Coordinate, Point, VisibleRegion } from "../Common/Models";
-import * as Common from "../../common";
+import { Projection } from "../projection";
 import { Marker } from "../MapObjects/Marker";
 import { Circle } from "../Circle";
 import { Polygon } from "../Polygon";
 import { Polyline } from "../Polyline";
 import { GroundOverlay } from "../GroundOverlay";
 
-export interface MapObjectEventData<T> extends EventData {
-    mapObject: T;
+/**
+ * Represent a aggregates all camera position parameters such as location, zoom level, tilt angle, and bearing.
+ */
+export interface CameraPosition {
+    /** 
+     * Sets the direction that the camera is pointing in, in degrees clockwise from north.
+     */
+    bearing?: number;
+
+    /**
+     * Sets the location that the camera is pointing at.
+     */
+    position?: Coordinate;
+
+    /**
+     * Sets the angle, in degrees, of the camera angle from the nadir (directly facing the Earth).
+     */
+    tilt?: number;
+
+    /**
+     * Sets zoom level near the center of the screen.
+     */
+    zoom?: number;
 }
 
-export class Projection {
-    constructor(nativeProjection: any)
-
-    /**
-     * Returns the geographic location that corresponds to a screen location.
-     */
-    public fromScreenLocation(point: Common.Point): Common.Coordinate;
-
-    /**
-     * Gets a projection of the viewing frustum for converting between screen coordinates and geo-latitude/longitude coordinates.
-     */
-    public getVisibleRegion(): VisibleRegion;
-
-    /**
-     * Returns a screen location that corresponds to a geographical coordinate (Coordinate).
-     */
-    public toScreenLocation(location: Common.Coordinate): Common.Point;
+export interface MapObjectEventData<T> extends EventData {
+    mapObject: T;
 }
 
 export enum MapType {
@@ -105,30 +110,6 @@ export interface UiSettings {
      * Gets or sets whether zoom gestures are enabled/disabled.
      */
     isZoomGesturesEnabled?: boolean;
-}
-
-
-/**
- * A projection is used to translate between on screen location
- * and geographic coordinates on the surface of the Earth (Coordinate).
- * Screen location is in screen pixels (not display pixels) with respect
- * to the top left corner of the map (and not necessarily of the whole screen).
- */
-export class Projection {
-    /**
-     * Returns the geographic location that corresponds to a screen location.
-     */
-    fromScreenLocation(point: Common.Point): Common.Coordinate;
-
-    /**
-     * Returns a projection of the viewing frustum for converting between screen coordinates and geo-latitude/longitude coordinates.
-     */
-    getVisibleRegion(): VisibleRegion;
-
-    /**
-     * Returns a screen location that corresponds to a geographical coordinate (Coordinate).
-     */
-    toScreenLocation(location: Common.Coordinate): Common.Point;
 }
 
 export class GoogleMap {
@@ -230,7 +211,7 @@ export class GoogleMap {
     on(eventName: "circleTap", callback: (args: MapObjectEventData<Circle>) => void, thisArg?: any);
     on(eventName: "polygonTap", callback: (args: MapObjectEventData<Polygon>) => void, thisArg?: any);
     on(eventName: "polylineTap", callback: (args: MapObjectEventData<Polyline>) => void, thisArg?: any);
-    on(eventName: "poiTap", callback: (args: MapObjectEventData<Common.PointOfInterest>) => void, thisArg?: any);
+    on(eventName: "poiTap", callback: (args: MapObjectEventData<PointOfInterest>) => void, thisArg?: any);
     on(eventName: "groundOverlayTap", callback: (args: MapObjectEventData<GroundOverlay>) => void, thisArg?: any);
 
     on(eventName: "myLocationButtonTap", callback: (args: EventData) => void, thisArg?: any);
@@ -254,7 +235,7 @@ export class GoogleMap {
     off(eventName: "circleTap", callback: (args: MapObjectEventData<Circle>) => void, thisArg?: any);
     off(eventName: "polygonTap", callback: (args: MapObjectEventData<Polygon>) => void, thisArg?: any);
     off(eventName: "polylineTap", callback: (args: MapObjectEventData<Polyline>) => void, thisArg?: any);
-    off(eventName: "poiTap", callback: (args: MapObjectEventData<Common.PointOfInterest>) => void, thisArg?: any);
+    off(eventName: "poiTap", callback: (args: MapObjectEventData<PointOfInterest>) => void, thisArg?: any);
     off(eventName: "groundOverlayTap", callback: (args: MapObjectEventData<GroundOverlay>) => void, thisArg?: any);
 
     off(eventName: "myLocationButtonTap", callback: (args: EventData) => void, thisArg?: any);

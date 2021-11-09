@@ -74,15 +74,15 @@ export class TileOverlay extends TileOverlayBase {
         }
     }
     
-	[opacityProperty.setNative](value: number) {
+    [opacityProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setTransparency(value);
         }
     }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setZIndex(value);
         }
-	}
+    }
 }

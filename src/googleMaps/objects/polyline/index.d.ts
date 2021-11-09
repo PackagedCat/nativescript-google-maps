@@ -1,8 +1,7 @@
 import { Color } from "@nativescript/core";
-import { PolylineBase } from "./index.common";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
-export class Polyline extends PolylineBase {	
+export class Polyline {	
 	/**
 	 * Gets or sets whether to draw each segment of the line as a geodesic or not.
 	 * 
@@ -14,7 +13,7 @@ export class Polyline extends PolylineBase {
 	 */
 	public isGeodesic: boolean;
 
-    /**
+	/**
      * Gets or sets the tappability of the polyline.
      */
 	public isTappable: boolean;
@@ -32,7 +31,7 @@ export class Polyline extends PolylineBase {
 	 * A polyline is not closed by default; to form a closed polyline,
 	 * the start and end points must be the same.
 	 */
-	public path: Common.Coordinate[];
+	public path: Coordinate[];
 
 	/**
 	 * Gets or sets the stroke color of the polyline.

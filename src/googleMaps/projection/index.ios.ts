@@ -1,18 +1,18 @@
 import { ProjectionBase } from "./index.common";
-import * as Common from "../../common";
+import { Coordinate, Point, VisibleRegion} from "../models";
 
 export class Projection extends ProjectionBase {
     public nativeObject: GMSProjection;
 
-    public fromScreenLocation(point: Common.Point): Common.Coordinate {
+    public fromScreenLocation(point: Point): Coordinate {
         return this.nativeObject.coordinateForPoint(point);
     }
 
-    public getVisibleRegion(): Common.VisibleRegion {
+    public getVisibleRegion(): VisibleRegion {
         return this.nativeObject.visibleRegion();
     }
 
-    public toScreenLocation(location: Common.Coordinate): Common.Point {
+    public toScreenLocation(location: Coordinate): Point {
         return this.nativeObject.pointForCoordinate(location);
     }
 }

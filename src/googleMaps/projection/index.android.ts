@@ -1,17 +1,17 @@
 import { ProjectionBase } from "./index.common";
-import * as Common from "../../common";
-import * as Converters from "../../converters/converters.android";
+import { Coordinate, Point, VisibleRegion} from "../models";
+import * as Converters from "../converters/converters.android";
 
 export class Projection extends ProjectionBase {
     public nativeObject: com.google.android.gms.maps.Projection;
 
-    public fromScreenLocation(point: Common.Point): Common.Coordinate {
+    public fromScreenLocation(point: Point): Coordinate {
         return Converters.nativeLatLngToCoordinate(
             this.nativeObject.fromScreenLocation(
                 Converters.pointToNativePoint(point)));
     }
 
-    public getVisibleRegion(): Common.VisibleRegion {
+    public getVisibleRegion(): VisibleRegion {
         const nativeVisibleRegion = this.nativeObject.getVisibleRegion();
         return {
             farLeft: Converters.nativeLatLngToCoordinate(nativeVisibleRegion.farLeft),
@@ -21,7 +21,7 @@ export class Projection extends ProjectionBase {
         };
     }
 
-    public toScreenLocation(location: Common.Coordinate): Common.Point {
+    public toScreenLocation(location: Coordinate): Point {
         return Converters.nativePointToPoint(
             this.nativeObject.toScreenLocation(
                 Converters.coordinateToNativeLatLng(location)));

@@ -14,7 +14,7 @@ import {
 } from "./index.common";
 import * as Converters from "../../converters/converters.android";
 import { Color } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Marker extends MarkerBase {
     public nativeMapObject: com.google.android.gms.maps.model.Marker;
@@ -23,6 +23,7 @@ export class Marker extends MarkerBase {
         const nativeOptions = new com.google.android.gms.maps.model.MarkerOptions();
 
         nativeOptions.alpha(this.opacity);
+        nativeOptions.anchor(this.anchor.x, this.anchor.y);
         nativeOptions.draggable(this.isDraggable);
         nativeOptions.flat(this.isFlat);
         nativeOptions.position(Converters.coordinateToNativeLatLng(this.position));
@@ -52,7 +53,7 @@ export class Marker extends MarkerBase {
         });
     }
     
-	[defaultIconColorProperty.setNative](value: Color) {
+    [defaultIconColorProperty.setNative](value: Color) {
         if (this.nativeMapObject != null && this.icon == null) {
             if (value == null) {
                 this.nativeMapObject.setIcon(
@@ -62,9 +63,9 @@ export class Marker extends MarkerBase {
                     com.google.android.gms.maps.model.BitmapDescriptorFactory.defaultMarker(value.android));
             }
         }
-	}
+    }
     
-	[iconProperty.setNative](value: any) {
+    [iconProperty.setNative](value: any) {
         if (this.nativeMapObject == null) {
             return;
         }
@@ -78,13 +79,13 @@ export class Marker extends MarkerBase {
         });
     }
     
-	[isDraggableProperty.setNative](value: boolean) {
+    [isDraggableProperty.setNative](value: boolean) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setDraggable(value);
         }
-	}
+    }
     
-	[isFlatProperty.setNative](value: boolean) {
+    [isFlatProperty.setNative](value: boolean) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setFlat(value);
         }
@@ -96,42 +97,42 @@ export class Marker extends MarkerBase {
         }
     }
     
-	[opacityProperty.setNative](value: number) {
+    [opacityProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setAlpha(value);
         }
     }
     
-	[positionProperty.setNative](value: Common.Coordinate) {
+    [positionProperty.setNative](value: Coordinate) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setPosition(Converters.coordinateToNativeLatLng({
                 latitude: value.latitude,
                 longitude: value.longitude
             }));
         }
-	}
+    }
     
-	[rotationProperty.setNative](value: number) {
+    [rotationProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setRotation(value);
         }
-	}
+    }
     
-	[snippetProperty.setNative](value: string) {
+    [snippetProperty.setNative](value: string) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setSnippet(value);
         }
-	}
+    }
     
-	[titleProperty.setNative](value: string) {
+    [titleProperty.setNative](value: string) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setTitle(value);
         }
-	}
+    }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setZIndex(value);
         }
-	}
+    }
 }

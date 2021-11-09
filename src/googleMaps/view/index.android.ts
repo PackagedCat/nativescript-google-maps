@@ -14,13 +14,25 @@ import {
     isTrafficEnabledProperty,
     contentDescriptionProperty,
     mapStyleProperty,
-    MapObjectEventData
+    MapObjectEventData,
+    CameraPosition
 } from "./index.common";
-import * as Converters from "../../converters/converters.android";
-import * as Common from "../../common";
+import * as Converters from "../converters/converters.android";
+import { PointOfInterest } from "../models";
 import { Projection } from "../projection";
+import { MapObjectBase } from "../objects/mapObjectBase";
+import { nativeLatLngToCoordinate } from "../converters/converters.android";
 
 export * from "./index.common";
+
+function nativeCameraPositionToCameraPosition(nativeCameraPosition: com.google.android.gms.maps.model.CameraPosition): CameraPosition {
+    return {
+        bearing: nativeCameraPosition.bearing,
+        position: nativeLatLngToCoordinate(nativeCameraPosition.target),
+        tilt: nativeCameraPosition.tilt,
+        zoom: nativeCameraPosition.zoom
+    };
+}
 
 export class GoogleMap extends GoogleMapBase {
     private _frameLayoutId: number;
@@ -50,7 +62,7 @@ export class GoogleMap extends GoogleMapBase {
         this._googleMap = googleMap;
         googleMap.setOnCameraMoveListener(new com.google.android.gms.maps.GoogleMap.OnCameraMoveListener({
             onCameraMove: (() => {
-                cameraPositionProperty.nativeValueChange(this, Converters.nativeCameraPositionToCameraPosition(this._googleMap.getCameraPosition()));
+                cameraPositionProperty.nativeValueChange(this, nativeCameraPositionToCameraPosition(this._googleMap.getCameraPosition()));
                 this.notify({
                     eventName: GoogleMap.cameraMoveEvent,
                     object: this
@@ -92,7 +104,7 @@ export class GoogleMap extends GoogleMapBase {
         return googleMapOptions;
     }
 
-    private createNativeCameraPosition(cameraPosition: Common.CameraPosition) {
+    private createNativeCameraPosition(cameraPosition: CameraPosition) {
         if (cameraPosition.position == null) {
             throw new Error("GoogleMap: The property \"position\" of \"cameraPosition\" property must not be null");
         }
@@ -134,7 +146,7 @@ export class GoogleMap extends GoogleMapBase {
         }).bind(this);
 
         const mapObjectCallback = ((eventName, nativeMapObject) => {
-            this.notify<MapObjectEventData<Common.MapObject>>({
+            this.notify<MapObjectEventData<MapObjectBase>>({
                 eventName: eventName,
                 object: this,
                 mapObject: this.getMapObjectByNative(nativeMapObject)
@@ -221,14 +233,14 @@ export class GoogleMap extends GoogleMapBase {
 
         googleMap.setOnPoiClickListener(new com.google.android.gms.maps.GoogleMap.OnPoiClickListener({
             onPoiClick: ((nativePoi) => {
-                this.notify<MapObjectEventData<Common.PointOfInterest>>({
+                this.notify<MapObjectEventData<PointOfInterest>>({
                     eventName: GoogleMap.poiTapEvent,
                     object: this,
                     mapObject: {
                         location: Converters.nativeLatLngToCoordinate(nativePoi.latLng),
                         name: nativePoi.name,
                         placeId: nativePoi.placeId
-                    } as Common.PointOfInterest
+                    } as PointOfInterest
                 });
             }).bind(this)
         }));
@@ -281,7 +293,7 @@ export class GoogleMap extends GoogleMapBase {
         return new Projection(this._googleMap.getProjection());
     }
 
-	[cameraPositionProperty.setNative](value: Common.CameraPosition) {
+    [cameraPositionProperty.setNative](value: CameraPosition) {
         if (this._googleMap == null) {
             return;
         }
@@ -296,61 +308,61 @@ export class GoogleMap extends GoogleMapBase {
         }
     }
 
-	[contentDescriptionProperty.setNative](value: string) {
+    [contentDescriptionProperty.setNative](value: string) {
         this.mapPromise.then(() => {
             this._googleMap.setContentDescription(value);
         });
     }
     
-	[isBuildingsEnabledProperty.setNative](value: boolean) {
+    [isBuildingsEnabledProperty.setNative](value: boolean) {
         if (this._googleMap != null) {
             this._googleMap.setBuildingsEnabled(value);
         }
     }
     
-	[isIndoorEnabledProperty.setNative](value: boolean) {
+    [isIndoorEnabledProperty.setNative](value: boolean) {
         if (this._googleMap != null) {
             this._googleMap.setIndoorEnabled(value);
         }
     }
     
-	[isMyLocationEnabledProperty.setNative](value: boolean) {
+    [isMyLocationEnabledProperty.setNative](value: boolean) {
         if (this._googleMap != null) {
             this._googleMap.setMyLocationEnabled(value);
         }
     }
     
-	[isTrafficEnabledProperty.setNative](value: boolean) {
+    [isTrafficEnabledProperty.setNative](value: boolean) {
         if (this._googleMap != null) {
             this._googleMap.setTrafficEnabled(value);
         }
     }
     
-	[mapTypeProperty.setNative](value: MapType) {
+    [mapTypeProperty.setNative](value: MapType) {
         if (this._googleMap != null) {
             this._googleMap.setMapType(value);
         }
     }
     
-	[mapStyleProperty.setNative](value: string) {
+    [mapStyleProperty.setNative](value: string) {
         this.mapPromise.then(() => {
             this._googleMap.setMapStyle(new com.google.android.gms.maps.model.MapStyleOptions(value));
         });
     }
     
-	[maxZoomLevelProperty.setNative](value: number) {
+    [maxZoomLevelProperty.setNative]() {
         if (this._googleMap != null) {
             this.setMinMaxZoomLevel();
         }
     }
     
-	[minZoomLevelProperty.setNative](value: number) {
+    [minZoomLevelProperty.setNative]() {
         if (this._googleMap != null) {
             this.setMinMaxZoomLevel();
         }
     }
 
-	[uiSettingsProperty.setNative](value: UiSettings) {
+    [uiSettingsProperty.setNative](value: UiSettings) {
         if (this._googleMap == null) {
             return;
         }

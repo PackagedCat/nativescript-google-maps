@@ -3,5 +3,5 @@ android {
 }
 
 dependencies {
-    compile "com.google.android.gms:play-services-maps:17.0.0"
+    compile "com.google.android.gms:play-services-maps:18.0.0"
 }

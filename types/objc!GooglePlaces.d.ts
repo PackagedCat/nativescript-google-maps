@@ -1,9 +1,9 @@
 
 declare class GMSAddressComponent extends NSObject {
 
-	static alloc(): GMSAddressComponent; // inherited from NSObject
+    static alloc(): GMSAddressComponent; // inherited from NSObject
 
-	static new(): GMSAddressComponent; // inherited from NSObject
+    static new(): GMSAddressComponent; // inherited from NSObject
 
 	readonly name: string;
 
@@ -16,9 +16,9 @@ declare class GMSAddressComponent extends NSObject {
 
 declare class GMSAutocompleteFetcher extends NSObject {
 
-	static alloc(): GMSAutocompleteFetcher; // inherited from NSObject
+    static alloc(): GMSAutocompleteFetcher; // inherited from NSObject
 
-	static new(): GMSAutocompleteFetcher; // inherited from NSObject
+    static new(): GMSAutocompleteFetcher; // inherited from NSObject
 
 	autocompleteFilter: GMSAutocompleteFilter;
 
@@ -46,9 +46,9 @@ declare var GMSAutocompleteFetcherDelegate: {
 
 declare class GMSAutocompleteFilter extends NSObject {
 
-	static alloc(): GMSAutocompleteFilter; // inherited from NSObject
+    static alloc(): GMSAutocompleteFilter; // inherited from NSObject
 
-	static new(): GMSAutocompleteFilter; // inherited from NSObject
+    static new(): GMSAutocompleteFilter; // inherited from NSObject
 
 	countries: NSArray<string>;
 
@@ -65,9 +65,9 @@ declare class GMSAutocompleteFilter extends NSObject {
 
 declare class GMSAutocompleteMatchFragment extends NSObject {
 
-	static alloc(): GMSAutocompleteMatchFragment; // inherited from NSObject
+    static alloc(): GMSAutocompleteMatchFragment; // inherited from NSObject
 
-	static new(): GMSAutocompleteMatchFragment; // inherited from NSObject
+    static new(): GMSAutocompleteMatchFragment; // inherited from NSObject
 
 	readonly length: number;
 
@@ -76,9 +76,9 @@ declare class GMSAutocompleteMatchFragment extends NSObject {
 
 declare class GMSAutocompletePrediction extends NSObject {
 
-	static alloc(): GMSAutocompletePrediction; // inherited from NSObject
+    static alloc(): GMSAutocompletePrediction; // inherited from NSObject
 
-	static new(): GMSAutocompletePrediction; // inherited from NSObject
+    static new(): GMSAutocompletePrediction; // inherited from NSObject
 
 	readonly attributedFullText: NSAttributedString;
 
@@ -95,9 +95,9 @@ declare class GMSAutocompletePrediction extends NSObject {
 
 declare class GMSAutocompleteResultsViewController extends UIViewController implements UISearchResultsUpdating {
 
-	static alloc(): GMSAutocompleteResultsViewController; // inherited from NSObject
+    static alloc(): GMSAutocompleteResultsViewController; // inherited from NSObject
 
-	static new(): GMSAutocompleteResultsViewController; // inherited from NSObject
+    static new(): GMSAutocompleteResultsViewController; // inherited from NSObject
 
 	autocompleteFilter: GMSAutocompleteFilter;
 
@@ -173,16 +173,16 @@ declare var GMSAutocompleteResultsViewControllerDelegate: {
 
 declare class GMSAutocompleteSessionToken extends NSObject {
 
-	static alloc(): GMSAutocompleteSessionToken; // inherited from NSObject
+    static alloc(): GMSAutocompleteSessionToken; // inherited from NSObject
 
-	static new(): GMSAutocompleteSessionToken; // inherited from NSObject
+    static new(): GMSAutocompleteSessionToken; // inherited from NSObject
 }
 
 declare class GMSAutocompleteTableDataSource extends NSObject implements UITableViewDataSource, UITableViewDelegate {
 
-	static alloc(): GMSAutocompleteTableDataSource; // inherited from NSObject
+    static alloc(): GMSAutocompleteTableDataSource; // inherited from NSObject
 
-	static new(): GMSAutocompleteTableDataSource; // inherited from NSObject
+    static new(): GMSAutocompleteTableDataSource; // inherited from NSObject
 
 	autocompleteFilter: GMSAutocompleteFilter;
 
@@ -410,9 +410,9 @@ declare var GMSAutocompleteTableDataSourceDelegate: {
 
 declare class GMSAutocompleteViewController extends UIViewController {
 
-	static alloc(): GMSAutocompleteViewController; // inherited from NSObject
+    static alloc(): GMSAutocompleteViewController; // inherited from NSObject
 
-	static new(): GMSAutocompleteViewController; // inherited from NSObject
+    static new(): GMSAutocompleteViewController; // inherited from NSObject
 
 	autocompleteFilter: GMSAutocompleteFilter;
 
@@ -471,9 +471,9 @@ declare const enum GMSDayOfWeek {
 
 declare class GMSEvent extends NSObject {
 
-	static alloc(): GMSEvent; // inherited from NSObject
+    static alloc(): GMSEvent; // inherited from NSObject
 
-	static new(): GMSEvent; // inherited from NSObject
+    static new(): GMSEvent; // inherited from NSObject
 
 	readonly day: GMSDayOfWeek;
 
@@ -491,9 +491,9 @@ declare const enum GMSOpenNowStatus {
 
 declare class GMSOpeningHours extends NSObject {
 
-	static alloc(): GMSOpeningHours; // inherited from NSObject
+    static alloc(): GMSOpeningHours; // inherited from NSObject
 
-	static new(): GMSOpeningHours; // inherited from NSObject
+    static new(): GMSOpeningHours; // inherited from NSObject
 
 	readonly periods: NSArray<GMSPeriod>;
 
@@ -502,9 +502,9 @@ declare class GMSOpeningHours extends NSObject {
 
 declare class GMSPeriod extends NSObject {
 
-	static alloc(): GMSPeriod; // inherited from NSObject
+    static alloc(): GMSPeriod; // inherited from NSObject
 
-	static new(): GMSPeriod; // inherited from NSObject
+    static new(): GMSPeriod; // inherited from NSObject
 
 	readonly closeEvent: GMSEvent;
 
@@ -513,9 +513,9 @@ declare class GMSPeriod extends NSObject {
 
 declare class GMSPlace extends NSObject {
 
-	static alloc(): GMSPlace; // inherited from NSObject
+    static alloc(): GMSPlace; // inherited from NSObject
 
-	static new(): GMSPlace; // inherited from NSObject
+    static new(): GMSPlace; // inherited from NSObject
 
 	readonly UTCOffsetMinutes: number;
 
@@ -599,9 +599,9 @@ declare const enum GMSPlaceField {
 
 declare class GMSPlaceLikelihood extends NSObject implements NSCopying {
 
-	static alloc(): GMSPlaceLikelihood; // inherited from NSObject
+    static alloc(): GMSPlaceLikelihood; // inherited from NSObject
 
-	static new(): GMSPlaceLikelihood; // inherited from NSObject
+    static new(): GMSPlaceLikelihood; // inherited from NSObject
 
 	readonly likelihood: number;
 
@@ -616,9 +616,9 @@ declare class GMSPlaceLikelihood extends NSObject implements NSCopying {
 
 declare class GMSPlaceLikelihoodList extends NSObject {
 
-	static alloc(): GMSPlaceLikelihoodList; // inherited from NSObject
+    static alloc(): GMSPlaceLikelihoodList; // inherited from NSObject
 
-	static new(): GMSPlaceLikelihoodList; // inherited from NSObject
+    static new(): GMSPlaceLikelihoodList; // inherited from NSObject
 
 	readonly attributions: NSAttributedString;
 
@@ -654,9 +654,9 @@ declare const enum GMSPlaceOpenStatus {
 
 declare class GMSPlacePhotoMetadata extends NSObject {
 
-	static alloc(): GMSPlacePhotoMetadata; // inherited from NSObject
+    static alloc(): GMSPlacePhotoMetadata; // inherited from NSObject
 
-	static new(): GMSPlacePhotoMetadata; // inherited from NSObject
+    static new(): GMSPlacePhotoMetadata; // inherited from NSObject
 
 	readonly attributions: NSAttributedString;
 
@@ -665,9 +665,9 @@ declare class GMSPlacePhotoMetadata extends NSObject {
 
 declare class GMSPlacePhotoMetadataList extends NSObject {
 
-	static alloc(): GMSPlacePhotoMetadataList; // inherited from NSObject
+    static alloc(): GMSPlacePhotoMetadataList; // inherited from NSObject
 
-	static new(): GMSPlacePhotoMetadataList; // inherited from NSObject
+    static new(): GMSPlacePhotoMetadataList; // inherited from NSObject
 
 	readonly results: NSArray<GMSPlacePhotoMetadata>;
 }
@@ -702,35 +702,35 @@ declare const enum GMSPlacesBusinessStatus {
 
 declare class GMSPlacesClient extends NSObject {
 
-	static SDKLongVersion(): string;
+    static SDKLongVersion(): string;
 
-	static SDKVersion(): string;
+    static SDKVersion(): string;
 
-	static alloc(): GMSPlacesClient; // inherited from NSObject
+    static alloc(): GMSPlacesClient; // inherited from NSObject
 
-	static new(): GMSPlacesClient; // inherited from NSObject
+    static new(): GMSPlacesClient; // inherited from NSObject
 
-	static openSourceLicenseInfo(): string;
+    static openSourceLicenseInfo(): string;
 
-	static provideAPIKey(key: string): boolean;
+    static provideAPIKey(key: string): boolean;
 
-	static sharedClient(): GMSPlacesClient;
+    static sharedClient(): GMSPlacesClient;
 
-	currentPlaceWithCallback(callback: (p1: GMSPlaceLikelihoodList, p2: NSError) => void): void;
+    currentPlaceWithCallback(callback: (p1: GMSPlaceLikelihoodList, p2: NSError) => void): void;
 
-	fetchPlaceFromPlaceIDPlaceFieldsSessionTokenCallback(placeID: string, placeFields: GMSPlaceField, sessionToken: GMSAutocompleteSessionToken, callback: (p1: GMSPlace, p2: NSError) => void): void;
+    fetchPlaceFromPlaceIDPlaceFieldsSessionTokenCallback(placeID: string, placeFields: GMSPlaceField, sessionToken: GMSAutocompleteSessionToken, callback: (p1: GMSPlace, p2: NSError) => void): void;
 
-	findAutocompletePredictionsFromQueryFilterSessionTokenCallback(query: string, filter: GMSAutocompleteFilter, sessionToken: GMSAutocompleteSessionToken, callback: (p1: NSArray<GMSAutocompletePrediction>, p2: NSError) => void): void;
+    findAutocompletePredictionsFromQueryFilterSessionTokenCallback(query: string, filter: GMSAutocompleteFilter, sessionToken: GMSAutocompleteSessionToken, callback: (p1: NSArray<GMSAutocompletePrediction>, p2: NSError) => void): void;
 
-	findPlaceLikelihoodsFromCurrentLocationWithPlaceFieldsCallback(placeFields: GMSPlaceField, callback: (p1: NSArray<GMSPlaceLikelihood>, p2: NSError) => void): void;
+    findPlaceLikelihoodsFromCurrentLocationWithPlaceFieldsCallback(placeFields: GMSPlaceField, callback: (p1: NSArray<GMSPlaceLikelihood>, p2: NSError) => void): void;
 
-	loadPlacePhotoCallback(photoMetadata: GMSPlacePhotoMetadata, callback: (p1: UIImage, p2: NSError) => void): void;
+    loadPlacePhotoCallback(photoMetadata: GMSPlacePhotoMetadata, callback: (p1: UIImage, p2: NSError) => void): void;
 
-	loadPlacePhotoConstrainedToSizeScaleCallback(photoMetadata: GMSPlacePhotoMetadata, maxSize: CGSize, scale: number, callback: (p1: UIImage, p2: NSError) => void): void;
+    loadPlacePhotoConstrainedToSizeScaleCallback(photoMetadata: GMSPlacePhotoMetadata, maxSize: CGSize, scale: number, callback: (p1: UIImage, p2: NSError) => void): void;
 
-	lookUpPhotosForPlaceIDCallback(placeID: string, callback: (p1: GMSPlacePhotoMetadataList, p2: NSError) => void): void;
+    lookUpPhotosForPlaceIDCallback(placeID: string, callback: (p1: GMSPlacePhotoMetadataList, p2: NSError) => void): void;
 
-	lookUpPlaceIDCallback(placeID: string, callback: (p1: GMSPlace, p2: NSError) => void): void;
+    lookUpPlaceIDCallback(placeID: string, callback: (p1: GMSPlace, p2: NSError) => void): void;
 }
 
 declare const enum GMSPlacesErrorCode {
@@ -777,9 +777,9 @@ declare const enum GMSPlacesPriceLevel {
 
 declare class GMSPlusCode extends NSObject {
 
-	static alloc(): GMSPlusCode; // inherited from NSObject
+    static alloc(): GMSPlusCode; // inherited from NSObject
 
-	static new(): GMSPlusCode; // inherited from NSObject
+    static new(): GMSPlusCode; // inherited from NSObject
 
 	readonly compoundCode: string;
 
@@ -788,287 +788,287 @@ declare class GMSPlusCode extends NSObject {
 
 declare class GMSTime extends NSObject {
 
-	static alloc(): GMSTime; // inherited from NSObject
+    static alloc(): GMSTime; // inherited from NSObject
 
-	static new(): GMSTime; // inherited from NSObject
+    static new(): GMSTime; // inherited from NSObject
 
 	readonly hour: number;
 
 	readonly minute: number;
 }
 
-declare var kGMSAutocompleteMatchAttribute: string;
+declare let kGMSAutocompleteMatchAttribute: string;
 
-declare var kGMSPlaceTypeAccounting: string;
+declare let kGMSPlaceTypeAccounting: string;
 
-declare var kGMSPlaceTypeAdministrativeAreaLevel1: string;
+declare let kGMSPlaceTypeAdministrativeAreaLevel1: string;
 
-declare var kGMSPlaceTypeAdministrativeAreaLevel2: string;
+declare let kGMSPlaceTypeAdministrativeAreaLevel2: string;
 
-declare var kGMSPlaceTypeAdministrativeAreaLevel3: string;
+declare let kGMSPlaceTypeAdministrativeAreaLevel3: string;
 
-declare var kGMSPlaceTypeAdministrativeAreaLevel4: string;
+declare let kGMSPlaceTypeAdministrativeAreaLevel4: string;
 
-declare var kGMSPlaceTypeAdministrativeAreaLevel5: string;
+declare let kGMSPlaceTypeAdministrativeAreaLevel5: string;
 
-declare var kGMSPlaceTypeAirport: string;
+declare let kGMSPlaceTypeAirport: string;
 
-declare var kGMSPlaceTypeAmusementPark: string;
+declare let kGMSPlaceTypeAmusementPark: string;
 
-declare var kGMSPlaceTypeAquarium: string;
+declare let kGMSPlaceTypeAquarium: string;
 
-declare var kGMSPlaceTypeArtGallery: string;
+declare let kGMSPlaceTypeArtGallery: string;
 
-declare var kGMSPlaceTypeAtm: string;
+declare let kGMSPlaceTypeAtm: string;
 
-declare var kGMSPlaceTypeBakery: string;
+declare let kGMSPlaceTypeBakery: string;
 
-declare var kGMSPlaceTypeBank: string;
+declare let kGMSPlaceTypeBank: string;
 
-declare var kGMSPlaceTypeBar: string;
+declare let kGMSPlaceTypeBar: string;
 
-declare var kGMSPlaceTypeBeautySalon: string;
+declare let kGMSPlaceTypeBeautySalon: string;
 
-declare var kGMSPlaceTypeBicycleStore: string;
+declare let kGMSPlaceTypeBicycleStore: string;
 
-declare var kGMSPlaceTypeBookStore: string;
+declare let kGMSPlaceTypeBookStore: string;
 
-declare var kGMSPlaceTypeBowlingAlley: string;
+declare let kGMSPlaceTypeBowlingAlley: string;
 
-declare var kGMSPlaceTypeBusStation: string;
+declare let kGMSPlaceTypeBusStation: string;
 
-declare var kGMSPlaceTypeCafe: string;
+declare let kGMSPlaceTypeCafe: string;
 
-declare var kGMSPlaceTypeCampground: string;
+declare let kGMSPlaceTypeCampground: string;
 
-declare var kGMSPlaceTypeCarDealer: string;
+declare let kGMSPlaceTypeCarDealer: string;
 
-declare var kGMSPlaceTypeCarRental: string;
+declare let kGMSPlaceTypeCarRental: string;
 
-declare var kGMSPlaceTypeCarRepair: string;
+declare let kGMSPlaceTypeCarRepair: string;
 
-declare var kGMSPlaceTypeCarWash: string;
+declare let kGMSPlaceTypeCarWash: string;
 
-declare var kGMSPlaceTypeCasino: string;
+declare let kGMSPlaceTypeCasino: string;
 
-declare var kGMSPlaceTypeCemetery: string;
+declare let kGMSPlaceTypeCemetery: string;
 
-declare var kGMSPlaceTypeChurch: string;
+declare let kGMSPlaceTypeChurch: string;
 
-declare var kGMSPlaceTypeCityHall: string;
+declare let kGMSPlaceTypeCityHall: string;
 
-declare var kGMSPlaceTypeClothingStore: string;
+declare let kGMSPlaceTypeClothingStore: string;
 
-declare var kGMSPlaceTypeColloquialArea: string;
+declare let kGMSPlaceTypeColloquialArea: string;
 
-declare var kGMSPlaceTypeConvenienceStore: string;
+declare let kGMSPlaceTypeConvenienceStore: string;
 
-declare var kGMSPlaceTypeCountry: string;
+declare let kGMSPlaceTypeCountry: string;
 
-declare var kGMSPlaceTypeCourthouse: string;
+declare let kGMSPlaceTypeCourthouse: string;
 
-declare var kGMSPlaceTypeDentist: string;
+declare let kGMSPlaceTypeDentist: string;
 
-declare var kGMSPlaceTypeDepartmentStore: string;
+declare let kGMSPlaceTypeDepartmentStore: string;
 
-declare var kGMSPlaceTypeDoctor: string;
+declare let kGMSPlaceTypeDoctor: string;
 
-declare var kGMSPlaceTypeDrugstore: string;
+declare let kGMSPlaceTypeDrugstore: string;
 
-declare var kGMSPlaceTypeElectrician: string;
+declare let kGMSPlaceTypeElectrician: string;
 
-declare var kGMSPlaceTypeElectronicsStore: string;
+declare let kGMSPlaceTypeElectronicsStore: string;
 
-declare var kGMSPlaceTypeEmbassy: string;
+declare let kGMSPlaceTypeEmbassy: string;
 
-declare var kGMSPlaceTypeEstablishment: string;
+declare let kGMSPlaceTypeEstablishment: string;
 
-declare var kGMSPlaceTypeFinance: string;
+declare let kGMSPlaceTypeFinance: string;
 
-declare var kGMSPlaceTypeFireStation: string;
+declare let kGMSPlaceTypeFireStation: string;
 
-declare var kGMSPlaceTypeFloor: string;
+declare let kGMSPlaceTypeFloor: string;
 
-declare var kGMSPlaceTypeFlorist: string;
+declare let kGMSPlaceTypeFlorist: string;
 
-declare var kGMSPlaceTypeFood: string;
+declare let kGMSPlaceTypeFood: string;
 
-declare var kGMSPlaceTypeFuneralHome: string;
+declare let kGMSPlaceTypeFuneralHome: string;
 
-declare var kGMSPlaceTypeFurnitureStore: string;
+declare let kGMSPlaceTypeFurnitureStore: string;
 
-declare var kGMSPlaceTypeGasStation: string;
+declare let kGMSPlaceTypeGasStation: string;
 
-declare var kGMSPlaceTypeGeneralContractor: string;
+declare let kGMSPlaceTypeGeneralContractor: string;
 
-declare var kGMSPlaceTypeGeocode: string;
+declare let kGMSPlaceTypeGeocode: string;
 
-declare var kGMSPlaceTypeGroceryOrSupermarket: string;
+declare let kGMSPlaceTypeGroceryOrSupermarket: string;
 
-declare var kGMSPlaceTypeGym: string;
+declare let kGMSPlaceTypeGym: string;
 
-declare var kGMSPlaceTypeHairCare: string;
+declare let kGMSPlaceTypeHairCare: string;
 
-declare var kGMSPlaceTypeHardwareStore: string;
+declare let kGMSPlaceTypeHardwareStore: string;
 
-declare var kGMSPlaceTypeHealth: string;
+declare let kGMSPlaceTypeHealth: string;
 
-declare var kGMSPlaceTypeHinduTemple: string;
+declare let kGMSPlaceTypeHinduTemple: string;
 
-declare var kGMSPlaceTypeHomeGoodsStore: string;
+declare let kGMSPlaceTypeHomeGoodsStore: string;
 
-declare var kGMSPlaceTypeHospital: string;
+declare let kGMSPlaceTypeHospital: string;
 
-declare var kGMSPlaceTypeInsuranceAgency: string;
+declare let kGMSPlaceTypeInsuranceAgency: string;
 
-declare var kGMSPlaceTypeIntersection: string;
+declare let kGMSPlaceTypeIntersection: string;
 
-declare var kGMSPlaceTypeJewelryStore: string;
+declare let kGMSPlaceTypeJewelryStore: string;
 
-declare var kGMSPlaceTypeLaundry: string;
+declare let kGMSPlaceTypeLaundry: string;
 
-declare var kGMSPlaceTypeLawyer: string;
+declare let kGMSPlaceTypeLawyer: string;
 
-declare var kGMSPlaceTypeLibrary: string;
+declare let kGMSPlaceTypeLibrary: string;
 
-declare var kGMSPlaceTypeLightRailStation: string;
+declare let kGMSPlaceTypeLightRailStation: string;
 
-declare var kGMSPlaceTypeLiquorStore: string;
+declare let kGMSPlaceTypeLiquorStore: string;
 
-declare var kGMSPlaceTypeLocalGovernmentOffice: string;
+declare let kGMSPlaceTypeLocalGovernmentOffice: string;
 
-declare var kGMSPlaceTypeLocality: string;
+declare let kGMSPlaceTypeLocality: string;
 
-declare var kGMSPlaceTypeLocksmith: string;
+declare let kGMSPlaceTypeLocksmith: string;
 
-declare var kGMSPlaceTypeLodging: string;
+declare let kGMSPlaceTypeLodging: string;
 
-declare var kGMSPlaceTypeMealDelivery: string;
+declare let kGMSPlaceTypeMealDelivery: string;
 
-declare var kGMSPlaceTypeMealTakeaway: string;
+declare let kGMSPlaceTypeMealTakeaway: string;
 
-declare var kGMSPlaceTypeMosque: string;
+declare let kGMSPlaceTypeMosque: string;
 
-declare var kGMSPlaceTypeMovieRental: string;
+declare let kGMSPlaceTypeMovieRental: string;
 
-declare var kGMSPlaceTypeMovieTheater: string;
+declare let kGMSPlaceTypeMovieTheater: string;
 
-declare var kGMSPlaceTypeMovingCompany: string;
+declare let kGMSPlaceTypeMovingCompany: string;
 
-declare var kGMSPlaceTypeMuseum: string;
+declare let kGMSPlaceTypeMuseum: string;
 
-declare var kGMSPlaceTypeNaturalFeature: string;
+declare let kGMSPlaceTypeNaturalFeature: string;
 
-declare var kGMSPlaceTypeNeighborhood: string;
+declare let kGMSPlaceTypeNeighborhood: string;
 
-declare var kGMSPlaceTypeNightClub: string;
+declare let kGMSPlaceTypeNightClub: string;
 
-declare var kGMSPlaceTypePainter: string;
+declare let kGMSPlaceTypePainter: string;
 
-declare var kGMSPlaceTypePark: string;
+declare let kGMSPlaceTypePark: string;
 
-declare var kGMSPlaceTypeParking: string;
+declare let kGMSPlaceTypeParking: string;
 
-declare var kGMSPlaceTypePetStore: string;
+declare let kGMSPlaceTypePetStore: string;
 
-declare var kGMSPlaceTypePharmacy: string;
+declare let kGMSPlaceTypePharmacy: string;
 
-declare var kGMSPlaceTypePhysiotherapist: string;
+declare let kGMSPlaceTypePhysiotherapist: string;
 
-declare var kGMSPlaceTypePlaceOfWorship: string;
+declare let kGMSPlaceTypePlaceOfWorship: string;
 
-declare var kGMSPlaceTypePlumber: string;
+declare let kGMSPlaceTypePlumber: string;
 
-declare var kGMSPlaceTypePointOfInterest: string;
+declare let kGMSPlaceTypePointOfInterest: string;
 
-declare var kGMSPlaceTypePolice: string;
+declare let kGMSPlaceTypePolice: string;
 
-declare var kGMSPlaceTypePolitical: string;
+declare let kGMSPlaceTypePolitical: string;
 
-declare var kGMSPlaceTypePostBox: string;
+declare let kGMSPlaceTypePostBox: string;
 
-declare var kGMSPlaceTypePostOffice: string;
+declare let kGMSPlaceTypePostOffice: string;
 
-declare var kGMSPlaceTypePostalCode: string;
+declare let kGMSPlaceTypePostalCode: string;
 
-declare var kGMSPlaceTypePostalCodePrefix: string;
+declare let kGMSPlaceTypePostalCodePrefix: string;
 
-declare var kGMSPlaceTypePostalCodeSuffix: string;
+declare let kGMSPlaceTypePostalCodeSuffix: string;
 
-declare var kGMSPlaceTypePostalTown: string;
+declare let kGMSPlaceTypePostalTown: string;
 
-declare var kGMSPlaceTypePremise: string;
+declare let kGMSPlaceTypePremise: string;
 
-declare var kGMSPlaceTypePrimarySchool: string;
+declare let kGMSPlaceTypePrimarySchool: string;
 
-declare var kGMSPlaceTypeRealEstateAgency: string;
+declare let kGMSPlaceTypeRealEstateAgency: string;
 
-declare var kGMSPlaceTypeRestaurant: string;
+declare let kGMSPlaceTypeRestaurant: string;
 
-declare var kGMSPlaceTypeRoofingContractor: string;
+declare let kGMSPlaceTypeRoofingContractor: string;
 
-declare var kGMSPlaceTypeRoom: string;
+declare let kGMSPlaceTypeRoom: string;
 
-declare var kGMSPlaceTypeRoute: string;
+declare let kGMSPlaceTypeRoute: string;
 
-declare var kGMSPlaceTypeRvPark: string;
+declare let kGMSPlaceTypeRvPark: string;
 
-declare var kGMSPlaceTypeSchool: string;
+declare let kGMSPlaceTypeSchool: string;
 
-declare var kGMSPlaceTypeSecondarySchool: string;
+declare let kGMSPlaceTypeSecondarySchool: string;
 
-declare var kGMSPlaceTypeShoeStore: string;
+declare let kGMSPlaceTypeShoeStore: string;
 
-declare var kGMSPlaceTypeShoppingMall: string;
+declare let kGMSPlaceTypeShoppingMall: string;
 
-declare var kGMSPlaceTypeSpa: string;
+declare let kGMSPlaceTypeSpa: string;
 
-declare var kGMSPlaceTypeStadium: string;
+declare let kGMSPlaceTypeStadium: string;
 
-declare var kGMSPlaceTypeStorage: string;
+declare let kGMSPlaceTypeStorage: string;
 
-declare var kGMSPlaceTypeStore: string;
+declare let kGMSPlaceTypeStore: string;
 
-declare var kGMSPlaceTypeStreetAddress: string;
+declare let kGMSPlaceTypeStreetAddress: string;
 
-declare var kGMSPlaceTypeStreetNumber: string;
+declare let kGMSPlaceTypeStreetNumber: string;
 
-declare var kGMSPlaceTypeSublocality: string;
+declare let kGMSPlaceTypeSublocality: string;
 
-declare var kGMSPlaceTypeSublocalityLevel1: string;
+declare let kGMSPlaceTypeSublocalityLevel1: string;
 
-declare var kGMSPlaceTypeSublocalityLevel2: string;
+declare let kGMSPlaceTypeSublocalityLevel2: string;
 
-declare var kGMSPlaceTypeSublocalityLevel3: string;
+declare let kGMSPlaceTypeSublocalityLevel3: string;
 
-declare var kGMSPlaceTypeSublocalityLevel4: string;
+declare let kGMSPlaceTypeSublocalityLevel4: string;
 
-declare var kGMSPlaceTypeSublocalityLevel5: string;
+declare let kGMSPlaceTypeSublocalityLevel5: string;
 
-declare var kGMSPlaceTypeSubpremise: string;
+declare let kGMSPlaceTypeSubpremise: string;
 
-declare var kGMSPlaceTypeSubwayStation: string;
+declare let kGMSPlaceTypeSubwayStation: string;
 
-declare var kGMSPlaceTypeSupermarket: string;
+declare let kGMSPlaceTypeSupermarket: string;
 
-declare var kGMSPlaceTypeSynagogue: string;
+declare let kGMSPlaceTypeSynagogue: string;
 
-declare var kGMSPlaceTypeTaxiStand: string;
+declare let kGMSPlaceTypeTaxiStand: string;
 
-declare var kGMSPlaceTypeTouristAttraction: string;
+declare let kGMSPlaceTypeTouristAttraction: string;
 
-declare var kGMSPlaceTypeTownSquare: string;
+declare let kGMSPlaceTypeTownSquare: string;
 
-declare var kGMSPlaceTypeTrainStation: string;
+declare let kGMSPlaceTypeTrainStation: string;
 
-declare var kGMSPlaceTypeTransitStation: string;
+declare let kGMSPlaceTypeTransitStation: string;
 
-declare var kGMSPlaceTypeTravelAgency: string;
+declare let kGMSPlaceTypeTravelAgency: string;
 
-declare var kGMSPlaceTypeUniversity: string;
+declare let kGMSPlaceTypeUniversity: string;
 
-declare var kGMSPlaceTypeVeterinaryCare: string;
+declare let kGMSPlaceTypeVeterinaryCare: string;
 
-declare var kGMSPlaceTypeZoo: string;
+declare let kGMSPlaceTypeZoo: string;
 
-declare var kGMSPlacesErrorDomain: string;
+declare let kGMSPlacesErrorDomain: string;

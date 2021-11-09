@@ -8,7 +8,7 @@ import {
     strokeWidthProperty
 } from "./index.common";
 import { Color, zIndexProperty } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Polyline extends PolylineBase {
     public nativeMapObject: GMSPolyline;
@@ -38,7 +38,7 @@ export class Polyline extends PolylineBase {
         this.nativeMapObject.map = value ? this.parent.nativeView : null;
     }
 
-	[pathProperty.setNative](value: Common.Coordinate[]) {
+    [pathProperty.setNative](value: Coordinate[]) {
         const nativePath = GMSMutablePath.path();
         for (const coordinate of value) {
             nativePath.addCoordinate(coordinate);
@@ -51,11 +51,11 @@ export class Polyline extends PolylineBase {
         this.nativeMapObject.strokeColor = value.ios;
     }
     
-	[strokeWidthProperty.setNative](value: number) {
+    [strokeWidthProperty.setNative](value: number) {
         this.nativeMapObject.strokeWidth = value;
-	}
+    }
     
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         this.nativeMapObject.zIndex = value;
-	}
+    }
 }

@@ -1,8 +1,7 @@
 import { Color } from "@nativescript/core";
-import { PolygonBase } from "./index.common";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
-export class Polygon extends PolygonBase {
+export class Polygon {
     public static fillPath: string;
 
     /**
@@ -19,7 +18,7 @@ export class Polygon extends PolygonBase {
      * A hole must be fully contained within the outline.
      * Multiple holes can be specified, however overlapping holes are not supported.
      */
-	public holes: Common.Coordinate[];
+	public holes: Coordinate[];
 	
 	/**
 	 * Gets or sets whether to draw each segment of the line as a geodesic or not.
@@ -32,7 +31,7 @@ export class Polygon extends PolygonBase {
 	 */
 	public isGeodesic: boolean;
 
-    /**
+	/**
      * Gets or sets the tappability of the polyline.
      */
 	public isTappable: boolean;
@@ -42,10 +41,10 @@ export class Polygon extends PolygonBase {
 	 */
 	public isVisible: boolean;
 
-    /**
+	/**
      * Gets or sets the path that of the polygon.
      */
-	public path: Common.Coordinate[];
+	public path: Coordinate[];
 
     /**
      * Gets or sets the color of the polygon's outline. The default value is black.

@@ -1,5 +1,5 @@
 import { GroundOverlayBase } from "./index.common";
-import * as Common from "../../common";
+import { Coordinate, CoordinateBounds } from "../../models";
 
 export class GroundOverlay extends GroundOverlayBase {
     /**
@@ -27,7 +27,7 @@ export class GroundOverlay extends GroundOverlayBase {
      * You must specify the position of the ground overlay before it is added to the map,
      * otherwise an error will be thrown when the ground overlay is added to the map.
      */
-    bounds: Common.CoordinateBounds;
+    bounds: CoordinateBounds;
 
     /**
      * Sets the dimensions of the ground overlay.
@@ -83,7 +83,7 @@ export class GroundOverlay extends GroundOverlayBase {
      * You must specify the position of the ground overlay before it is added to the map,
      * otherwise an error will be thrown when the ground overlay is added to the map.
      */
-    position: Common.Coordinate;
+    position: Coordinate;
     
     /**
      * Gets or sets the zIndex of this ground overlay.

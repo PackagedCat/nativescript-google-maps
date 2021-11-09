@@ -10,8 +10,7 @@ import {
     positionProperty,
     zIndexProperty
 } from "./index.common";
-import { Size } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate, CoordinateBounds } from "../../models";
 
 export class GroundOverlay extends GroundOverlayBase {
     public nativeMapObject: GMSGroundOverlay;
@@ -37,10 +36,10 @@ export class GroundOverlay extends GroundOverlayBase {
                         .initWithCoordinateCoordinate(
                             this.bounds.southwest,
                             this.bounds.northeast),
-                        imageSource.ios);
+                    imageSource.ios);
             } else {
                 this.nativeMapObject = GMSGroundOverlay.groundOverlayWithPositionIconZoomLevel(
-                    this.position as Common.Coordinate,
+                    this.position as Coordinate,
                     imageSource.ios,
                     0);
             }
@@ -58,14 +57,14 @@ export class GroundOverlay extends GroundOverlayBase {
         this.nativeMapObject.bearing = value;
     }
         
-	[boundsProperty.setNative](value: Common.CoordinateBounds) {
+    [boundsProperty.setNative](value: CoordinateBounds) {
         this.nativeMapObject.bounds = GMSCoordinateBounds.alloc()
             .initWithCoordinateCoordinate(
                 value.southwest,
                 value.northeast);
     }
     
-    [dimensionsProperty.setNative](value: Size | number) {
+    [dimensionsProperty.setNative]() {
         // if (typeof value === "number") {
         //     this.nativeMapObject.setDimensions(value);
         // } else {
@@ -74,14 +73,14 @@ export class GroundOverlay extends GroundOverlayBase {
         // this.nativeMapObject.
     }
 
-	[imageProperty.setNative](value: any) {        
+    [imageProperty.setNative](value: any) {        
         const image = this._getImage(value);
         image.then((imageSource) => {
             this.nativeMapObject.icon = imageSource.ios;
         }).catch((reason) => {
             console.error("GMapGroundOverlay: Failed to load image:", reason);
         });
-	}
+    }
 
     [isVisibleProperty.setNative](value: boolean) {
         this.nativeMapObject.map = value ? this.parent.nativeView : null;
@@ -91,15 +90,15 @@ export class GroundOverlay extends GroundOverlayBase {
         this.nativeMapObject.tappable = value;
     }
     
-	[opacityProperty.setNative](value: number) {
+    [opacityProperty.setNative](value: number) {
         this.nativeMapObject.opacity = value;
     }
     
-	[positionProperty.setNative](value: Common.Coordinate) {
-        this.nativeMapObject.position = value as Common.Coordinate;
-	}
+    [positionProperty.setNative](value: Coordinate) {
+        this.nativeMapObject.position = value as Coordinate;
+    }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         this.nativeMapObject.zIndex = value;
-	}
+    }
 }

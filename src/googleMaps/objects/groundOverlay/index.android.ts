@@ -11,7 +11,7 @@ import {
     zIndexProperty
 } from "./index.common";
 import { Size } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate, CoordinateBounds } from "../../models";
 import * as Converters from "../../converters/converters.android";
 
 export class GroundOverlay extends GroundOverlayBase {
@@ -48,15 +48,15 @@ export class GroundOverlay extends GroundOverlayBase {
                 if (typeof this.dimensions === "number") {
                     nativeOptions.position(
                         Converters.coordinateToNativeLatLng({
-                            latitude: (this.position as Common.Coordinate).latitude,
-                            longitude: (this.position as Common.Coordinate).longitude
+                            latitude: (this.position as Coordinate).latitude,
+                            longitude: (this.position as Coordinate).longitude
                         }),
                         this.dimensions);
                 } else {
                     nativeOptions.position(
                         Converters.coordinateToNativeLatLng({
-                            latitude: (this.position as Common.Coordinate).latitude,
-                            longitude: (this.position as Common.Coordinate).longitude
+                            latitude: (this.position as Coordinate).latitude,
+                            longitude: (this.position as Coordinate).longitude
                         }),
                         this.dimensions.width,
                         this.dimensions.height);
@@ -81,7 +81,7 @@ export class GroundOverlay extends GroundOverlayBase {
         }
     }
 
-	[boundsProperty.setNative](value: Common.CoordinateBounds) {
+    [boundsProperty.setNative](value: CoordinateBounds) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setPositionFromBounds(
                 Converters.coordinateBoundsToNativeLatLngBounds(value));
@@ -100,7 +100,7 @@ export class GroundOverlay extends GroundOverlayBase {
         }
     }
 
-	[imageProperty.setNative](value: any) {
+    [imageProperty.setNative](value: any) {
         if (this.nativeMapObject == null) {
             return null;
         }
@@ -112,7 +112,7 @@ export class GroundOverlay extends GroundOverlayBase {
         }).catch((reason) => {
             console.error("GMapGroundOverlay: Failed to load image:", reason);
         });
-	}
+    }
 
     [isVisibleProperty.setNative](value: boolean) {
         if (this.nativeMapObject != null) {
@@ -126,22 +126,22 @@ export class GroundOverlay extends GroundOverlayBase {
         }
     }
     
-	[opacityProperty.setNative](value: number) {
+    [opacityProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setTransparency(value);
         }
     }
     
-	[positionProperty.setNative](value: Common.Coordinate) {
+    [positionProperty.setNative](value: Coordinate) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setPosition(
                 Converters.coordinateToNativeLatLng(value));
         }
-	}
+    }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setZIndex(value);
         }
-	}
+    }
 }

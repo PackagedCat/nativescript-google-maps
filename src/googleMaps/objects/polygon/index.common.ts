@@ -1,8 +1,9 @@
 import { booleanConverter, Color, Property } from "@nativescript/core";
-import * as Common from "../../common";
+import { MapObjectBase } from "../mapObjectBase";
+import { Coordinate } from "../../models";
 
-export abstract class PolygonBase extends Common.MapObject {
-	public static get fillPath() {
+export abstract class PolygonBase extends MapObjectBase {
+    public static get fillPath() {
         if (global.isAndroid) {
             return [
                 {
@@ -114,7 +115,7 @@ export abstract class PolygonBase extends Common.MapObject {
      * A hole must be fully contained within the outline.
      * Multiple holes can be specified, however overlapping holes are not supported.
      */
-	public holes: Common.Coordinate[][];
+	public holes: Coordinate[][];
 	
 	/**
 	 * Gets or sets whether to draw each segment of the line as a geodesic or not.
@@ -127,7 +128,7 @@ export abstract class PolygonBase extends Common.MapObject {
 	 */
 	public isGeodesic: boolean;
 
-    /**
+	/**
      * Gets or sets the tappability of the polyline.
      */
 	public isTappable: boolean;
@@ -137,10 +138,10 @@ export abstract class PolygonBase extends Common.MapObject {
 	 */
 	public isVisible: boolean;
 
-    /**
+	/**
      * Gets or sets the path that of the polygon.
      */
-	public path: Common.Coordinate[];
+	public path: Coordinate[];
 
     /**
      * Gets or sets the color of the polygon's outline. The default value is black.
@@ -159,62 +160,62 @@ export abstract class PolygonBase extends Common.MapObject {
 }
 
 export const fillColorProperty = new Property<PolygonBase, Color>({
-	name: "fillColor",
-	equalityComparer: Color.equals,
+    name: "fillColor",
+    equalityComparer: Color.equals,
     defaultValue: new Color("transparent"),
-	valueConverter: (v) => new Color(v),
+    valueConverter: (v) => new Color(v),
 });
 fillColorProperty.register(PolygonBase);
 
-export const holesProperty = new Property<PolygonBase, Common.Coordinate[]>({
-	name: "holes"
+export const holesProperty = new Property<PolygonBase, Coordinate[]>({
+    name: "holes"
 });
 holesProperty.register(PolygonBase);
 
 export const isGeodesicProperty = new Property<PolygonBase, boolean>({
-	name: "isGeodesic",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isGeodesic",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isGeodesicProperty.register(PolygonBase);
 
 export const isTappableProperty = new Property<PolygonBase, boolean>({
-	name: "isTappable",
-	defaultValue: false,
-	valueConverter: booleanConverter,
+    name: "isTappable",
+    defaultValue: false,
+    valueConverter: booleanConverter,
 });
 isTappableProperty.register(PolygonBase);
 
 export const isVisibleProperty = new Property<PolygonBase, boolean>({
-	name: "isVisible",
-	defaultValue: true,
-	valueConverter: booleanConverter,
+    name: "isVisible",
+    defaultValue: true,
+    valueConverter: booleanConverter,
 });
 isVisibleProperty.register(PolygonBase);
 
-export const pathProperty = new Property<PolygonBase, Common.Coordinate[]>({
-	name: "path"
+export const pathProperty = new Property<PolygonBase, Coordinate[]>({
+    name: "path"
 });
 pathProperty.register(PolygonBase);
 
 export const strokeColorProperty = new Property<PolygonBase, Color>({
-	name: "strokeColor",
-	equalityComparer: Color.equals,
+    name: "strokeColor",
+    equalityComparer: Color.equals,
     defaultValue: new Color("#000000"),
-	valueConverter: (v) => new Color(v),
+    valueConverter: (v) => new Color(v),
 });
 strokeColorProperty.register(PolygonBase);
 
 export const strokeWidthProperty = new Property<PolygonBase, number>({
-	name: "strokeWidth",
-	defaultValue: 1,
-	valueConverter: parseFloat,
+    name: "strokeWidth",
+    defaultValue: 1,
+    valueConverter: parseFloat,
 });
 strokeWidthProperty.register(PolygonBase);
 
 export const zIndexProperty = new Property<PolygonBase, number>({
-	name: "zIndex",
-	defaultValue: 0,
-	valueConverter: (v) => parseInt(v),
+    name: "zIndex",
+    defaultValue: 0,
+    valueConverter: (v) => parseInt(v),
 });
 zIndexProperty.register(PolygonBase);

@@ -66,15 +66,15 @@ export class TileOverlay extends TileOverlayBase {
         this.nativeMapObject.map = value ? this.parent.nativeView : null;
     }
     
-	[opacityProperty.setNative](value: number) {
+    [opacityProperty.setNative](value: number) {
         this.nativeMapObject.opacity = value;
     }
 
-	[sizeProperty.setNative](value: number) {
+    [sizeProperty.setNative](value: number) {
         this.nativeMapObject.tileSize = value;
     }
 
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         this.nativeMapObject.zIndex = value;
-	}
+    }
 }

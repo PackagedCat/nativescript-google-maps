@@ -1,6 +1,7 @@
-import { MarkerBase } from "./index.common";
+import { Color, ImageAsset, ImageSource } from "@nativescript/core";
+import { Coordinate, Point } from "../../models";
 
-export class Marker extends MarkerBase {
+export class Marker {
 	/** 
 	 * Sets the anchor point for the marker.
 	 * 
@@ -52,9 +53,9 @@ export class Marker extends MarkerBase {
 	/**
 	 * Gets or sets the position of the marker.
 	 */
-	public position: Common.Coordinate;
+	public position: Coordinate;
 
-    /**
+	/**
      * Gets or sets the value indicates that the default behavior should not occur.
 	 * 
 	 * @summary

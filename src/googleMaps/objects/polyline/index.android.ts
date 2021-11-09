@@ -9,7 +9,7 @@ import {
 } from "./index.common";
 import * as Converters from "../../converters/converters.android";
 import { Color, zIndexProperty } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Polyline extends PolylineBase {
     public nativeMapObject: com.google.android.gms.maps.model.Polyline;
@@ -61,7 +61,7 @@ export class Polyline extends PolylineBase {
         }
     }
 
-	[pathProperty.setNative](value: Common.Coordinate[]) {
+    [pathProperty.setNative](value: Coordinate[]) {
         if (this.nativeMapObject != null) {
             const nativeLatLngs = new Array<com.google.android.gms.maps.model.LatLng>();
             for (const coordinate of value) {
@@ -78,15 +78,15 @@ export class Polyline extends PolylineBase {
         }
     }
     
-	[strokeWidthProperty.setNative](value: number) {
+    [strokeWidthProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setWidth(value);
         }
-	}
+    }
     
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.setZIndex(value);
         }
-	}
+    }
 }

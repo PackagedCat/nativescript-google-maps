@@ -10,7 +10,7 @@ import {
     strokeWidthProperty
 } from "./index.common";
 import { Color, zIndexProperty } from "@nativescript/core";
-import * as Common from "../../common";
+import { Coordinate } from "../../models";
 
 export class Polygon extends PolygonBase {
     public nativeMapObject: GMSPolygon;
@@ -32,7 +32,7 @@ export class Polygon extends PolygonBase {
         this.nativeMapObject.fillColor = value.ios;
     }
 
-	[holesProperty.setNative](value: Common.Coordinate[][]) {
+    [holesProperty.setNative](value: Coordinate[][]) {
         const holes = new Array<GMSPath>();
         for (const hole of value) {
             const nativePath = GMSMutablePath.path();
@@ -57,7 +57,7 @@ export class Polygon extends PolygonBase {
         this.nativeMapObject.map = value ? this.parent.nativeView : null;
     }
 
-	[pathProperty.setNative](value: Common.Coordinate[]) {
+    [pathProperty.setNative](value: Coordinate[]) {
         const nativePath = GMSMutablePath.path();
         for (const coordinate of value) {
             nativePath.addCoordinate(coordinate);
@@ -66,17 +66,17 @@ export class Polygon extends PolygonBase {
         this.nativeMapObject.path = nativePath;
     }
 
-	[strokeColorProperty.setNative](value: Color) {
+    [strokeColorProperty.setNative](value: Color) {
         if (this.nativeMapObject != null) {
             this.nativeMapObject.strokeColor = value.ios;
         }
-	}
+    }
 
-	[strokeWidthProperty.setNative](value: number) {
+    [strokeWidthProperty.setNative](value: number) {
         this.nativeMapObject.strokeWidth = value;
-	}
+    }
     
-	[zIndexProperty.setNative](value: number) {
+    [zIndexProperty.setNative](value: number) {
         this.nativeMapObject.zIndex = value;
-	}
+    }
 }

@@ -31,31 +31,6 @@ export interface CoordinateBounds {
 }
 
 /**
- * Represent a aggregates all camera position parameters such as location, zoom level, tilt angle, and bearing.
- */
-export interface CameraPosition {
-    /** 
-     * Sets the direction that the camera is pointing in, in degrees clockwise from north.
-     */
-    bearing?: number;
-
-    /**
-     * Sets the location that the camera is pointing at.
-     */
-    position?: Coordinate;
-
-    /**
-     * Sets the angle, in degrees, of the camera angle from the nadir (directly facing the Earth).
-     */
-    tilt?: number;
-
-    /**
-     * Sets zoom level near the center of the screen.
-     */
-    zoom?: number;
-}
-
-/**
  * Contains the four points defining the four-sided polygon that is visible in a map's camera.
  * This polygon can be a trapezoid instead of a rectangle, because a camera can have tilt.
  * If the camera is directly over the center of the camera, the shape is rectangular,

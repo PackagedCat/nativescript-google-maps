@@ -1,9 +1,9 @@
 
 declare class GMSAddress extends NSObject implements NSCopying {
 
-	static alloc(): GMSAddress; // inherited from NSObject
+    static alloc(): GMSAddress; // inherited from NSObject
 
-	static new(): GMSAddress; // inherited from NSObject
+    static new(): GMSAddress; // inherited from NSObject
 
 	readonly administrativeArea: string;
 
@@ -30,28 +30,28 @@ declare class GMSAddress extends NSObject implements NSCopying {
 
 declare class GMSCALayer extends CALayer {
 
-	static alloc(): GMSCALayer; // inherited from NSObject
+    static alloc(): GMSCALayer; // inherited from NSObject
 
-	static layer(): GMSCALayer; // inherited from CALayer
+    static layer(): GMSCALayer; // inherited from CALayer
 
-	static new(): GMSCALayer; // inherited from NSObject
+    static new(): GMSCALayer; // inherited from NSObject
 }
 
 declare class GMSCameraPosition extends NSObject implements NSCopying, NSMutableCopying {
 
-	static alloc(): GMSCameraPosition; // inherited from NSObject
+    static alloc(): GMSCameraPosition; // inherited from NSObject
 
-	static cameraWithLatitudeLongitudeZoom(latitude: number, longitude: number, zoom: number): GMSCameraPosition;
+    static cameraWithLatitudeLongitudeZoom(latitude: number, longitude: number, zoom: number): GMSCameraPosition;
 
-	static cameraWithLatitudeLongitudeZoomBearingViewingAngle(latitude: number, longitude: number, zoom: number, bearing: number, viewingAngle: number): GMSCameraPosition;
+    static cameraWithLatitudeLongitudeZoomBearingViewingAngle(latitude: number, longitude: number, zoom: number, bearing: number, viewingAngle: number): GMSCameraPosition;
 
-	static cameraWithTargetZoom(target: CLLocationCoordinate2D, zoom: number): GMSCameraPosition;
+    static cameraWithTargetZoom(target: CLLocationCoordinate2D, zoom: number): GMSCameraPosition;
 
-	static cameraWithTargetZoomBearingViewingAngle(target: CLLocationCoordinate2D, zoom: number, bearing: number, viewingAngle: number): GMSCameraPosition;
+    static cameraWithTargetZoomBearingViewingAngle(target: CLLocationCoordinate2D, zoom: number, bearing: number, viewingAngle: number): GMSCameraPosition;
 
-	static new(): GMSCameraPosition; // inherited from NSObject
+    static new(): GMSCameraPosition; // inherited from NSObject
 
-	static zoomAtCoordinateForMetersPerPoints(coordinate: CLLocationCoordinate2D, meters: number, points: number): number;
+    static zoomAtCoordinateForMetersPerPoints(coordinate: CLLocationCoordinate2D, meters: number, points: number): number;
 
 	readonly bearing: number;
 
@@ -84,42 +84,42 @@ declare class GMSCameraPosition extends NSObject implements NSCopying, NSMutable
 
 declare class GMSCameraUpdate extends NSObject {
 
-	static alloc(): GMSCameraUpdate; // inherited from NSObject
+    static alloc(): GMSCameraUpdate; // inherited from NSObject
 
-	static fitBounds(bounds: GMSCoordinateBounds): GMSCameraUpdate;
+    static fitBounds(bounds: GMSCoordinateBounds): GMSCameraUpdate;
 
-	static fitBoundsWithEdgeInsets(bounds: GMSCoordinateBounds, edgeInsets: UIEdgeInsets): GMSCameraUpdate;
+    static fitBoundsWithEdgeInsets(bounds: GMSCoordinateBounds, edgeInsets: UIEdgeInsets): GMSCameraUpdate;
 
-	static fitBoundsWithPadding(bounds: GMSCoordinateBounds, padding: number): GMSCameraUpdate;
+    static fitBoundsWithPadding(bounds: GMSCoordinateBounds, padding: number): GMSCameraUpdate;
 
-	static new(): GMSCameraUpdate; // inherited from NSObject
+    static new(): GMSCameraUpdate; // inherited from NSObject
 
-	static scrollByXY(dX: number, dY: number): GMSCameraUpdate;
+    static scrollByXY(dX: number, dY: number): GMSCameraUpdate;
 
-	static setCamera(camera: GMSCameraPosition): GMSCameraUpdate;
+    static setCamera(camera: GMSCameraPosition): GMSCameraUpdate;
 
-	static setTarget(target: CLLocationCoordinate2D): GMSCameraUpdate;
+    static setTarget(target: CLLocationCoordinate2D): GMSCameraUpdate;
 
-	static setTargetZoom(target: CLLocationCoordinate2D, zoom: number): GMSCameraUpdate;
+    static setTargetZoom(target: CLLocationCoordinate2D, zoom: number): GMSCameraUpdate;
 
-	static zoomBy(delta: number): GMSCameraUpdate;
+    static zoomBy(delta: number): GMSCameraUpdate;
 
-	static zoomByAtPoint(zoom: number, point: CGPoint): GMSCameraUpdate;
+    static zoomByAtPoint(zoom: number, point: CGPoint): GMSCameraUpdate;
 
-	static zoomIn(): GMSCameraUpdate;
+    static zoomIn(): GMSCameraUpdate;
 
-	static zoomOut(): GMSCameraUpdate;
+    static zoomOut(): GMSCameraUpdate;
 
-	static zoomTo(zoom: number): GMSCameraUpdate;
+    static zoomTo(zoom: number): GMSCameraUpdate;
 }
 
 declare class GMSCircle extends GMSOverlay {
 
-	static alloc(): GMSCircle; // inherited from NSObject
+    static alloc(): GMSCircle; // inherited from NSObject
 
-	static circleWithPositionRadius(position: CLLocationCoordinate2D, radius: number): GMSCircle;
+    static circleWithPositionRadius(position: CLLocationCoordinate2D, radius: number): GMSCircle;
 
-	static new(): GMSCircle; // inherited from NSObject
+    static new(): GMSCircle; // inherited from NSObject
 
 	fillColor: UIColor;
 
@@ -143,13 +143,13 @@ declare const enum GMSFrameRate {
 
 declare class GMSGeocoder extends NSObject {
 
-	static alloc(): GMSGeocoder; // inherited from NSObject
+    static alloc(): GMSGeocoder; // inherited from NSObject
 
-	static geocoder(): GMSGeocoder;
+    static geocoder(): GMSGeocoder;
 
-	static new(): GMSGeocoder; // inherited from NSObject
+    static new(): GMSGeocoder; // inherited from NSObject
 
-	reverseGeocodeCoordinateCompletionHandler(coordinate: CLLocationCoordinate2D, handler: (p1: GMSReverseGeocodeResponse, p2: NSError) => void): void;
+    reverseGeocodeCoordinateCompletionHandler(coordinate: CLLocationCoordinate2D, handler: (p1: GMSReverseGeocodeResponse, p2: NSError) => void): void;
 }
 
 declare const enum GMSGeocoderErrorCode {
@@ -181,13 +181,13 @@ declare function GMSGeometrySignedArea(path: GMSPath): number;
 
 declare class GMSGroundOverlay extends GMSOverlay {
 
-	static alloc(): GMSGroundOverlay; // inherited from NSObject
+    static alloc(): GMSGroundOverlay; // inherited from NSObject
 
-	static groundOverlayWithBoundsIcon(bounds: GMSCoordinateBounds, icon: UIImage): GMSGroundOverlay;
+    static groundOverlayWithBoundsIcon(bounds: GMSCoordinateBounds, icon: UIImage): GMSGroundOverlay;
 
-	static groundOverlayWithPositionIconZoomLevel(position: CLLocationCoordinate2D, icon: UIImage, zoomLevel: number): GMSGroundOverlay;
+    static groundOverlayWithPositionIconZoomLevel(position: CLLocationCoordinate2D, icon: UIImage, zoomLevel: number): GMSGroundOverlay;
 
-	static new(): GMSGroundOverlay; // inherited from NSObject
+    static new(): GMSGroundOverlay; // inherited from NSObject
 
 	anchor: CGPoint;
 
@@ -204,9 +204,9 @@ declare class GMSGroundOverlay extends GMSOverlay {
 
 declare class GMSIndoorBuilding extends NSObject {
 
-	static alloc(): GMSIndoorBuilding; // inherited from NSObject
+    static alloc(): GMSIndoorBuilding; // inherited from NSObject
 
-	static new(): GMSIndoorBuilding; // inherited from NSObject
+    static new(): GMSIndoorBuilding; // inherited from NSObject
 
 	readonly defaultLevelIndex: number;
 
@@ -217,9 +217,9 @@ declare class GMSIndoorBuilding extends NSObject {
 
 declare class GMSIndoorDisplay extends NSObject {
 
-	static alloc(): GMSIndoorDisplay; // inherited from NSObject
+    static alloc(): GMSIndoorDisplay; // inherited from NSObject
 
-	static new(): GMSIndoorDisplay; // inherited from NSObject
+    static new(): GMSIndoorDisplay; // inherited from NSObject
 
 	readonly activeBuilding: GMSIndoorBuilding;
 
@@ -241,9 +241,9 @@ declare var GMSIndoorDisplayDelegate: {
 
 declare class GMSIndoorLevel extends NSObject {
 
-	static alloc(): GMSIndoorLevel; // inherited from NSObject
+    static alloc(): GMSIndoorLevel; // inherited from NSObject
 
-	static new(): GMSIndoorLevel; // inherited from NSObject
+    static new(): GMSIndoorLevel; // inherited from NSObject
 
 	readonly name: string;
 
@@ -261,11 +261,11 @@ declare const enum GMSLengthKind {
 
 declare class GMSMapLayer extends GMSCALayer {
 
-	static alloc(): GMSMapLayer; // inherited from NSObject
+    static alloc(): GMSMapLayer; // inherited from NSObject
 
-	static layer(): GMSMapLayer; // inherited from CALayer
+    static layer(): GMSMapLayer; // inherited from CALayer
 
-	static new(): GMSMapLayer; // inherited from NSObject
+    static new(): GMSMapLayer; // inherited from NSObject
 
 	cameraBearing: number;
 
@@ -290,34 +290,34 @@ declare function GMSMapPointInterpolate(a: GMSMapPoint, b: GMSMapPoint, t: numbe
 
 declare class GMSMapStyle extends NSObject {
 
-	static alloc(): GMSMapStyle; // inherited from NSObject
+    static alloc(): GMSMapStyle; // inherited from NSObject
 
-	static new(): GMSMapStyle; // inherited from NSObject
+    static new(): GMSMapStyle; // inherited from NSObject
 
-	static styleWithContentsOfFileURLError(fileURL: NSURL): GMSMapStyle;
+    static styleWithContentsOfFileURLError(fileURL: NSURL): GMSMapStyle;
 
-	static styleWithJSONStringError(style: string): GMSMapStyle;
+    static styleWithJSONStringError(style: string): GMSMapStyle;
 }
 
 declare class GMSMapView extends UIView {
 
-	static alloc(): GMSMapView; // inherited from NSObject
+    static alloc(): GMSMapView; // inherited from NSObject
 
-	static appearance(): GMSMapView; // inherited from UIAppearance
+    static appearance(): GMSMapView; // inherited from UIAppearance
 
-	static appearanceForTraitCollection(trait: UITraitCollection): GMSMapView; // inherited from UIAppearance
+    static appearanceForTraitCollection(trait: UITraitCollection): GMSMapView; // inherited from UIAppearance
 
-	static appearanceForTraitCollectionWhenContainedIn(trait: UITraitCollection, ContainerClass: typeof NSObject): GMSMapView; // inherited from UIAppearance
+    static appearanceForTraitCollectionWhenContainedIn(trait: UITraitCollection, ContainerClass: typeof NSObject): GMSMapView; // inherited from UIAppearance
 
-	static appearanceForTraitCollectionWhenContainedInInstancesOfClasses(trait: UITraitCollection, containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSMapView; // inherited from UIAppearance
+    static appearanceForTraitCollectionWhenContainedInInstancesOfClasses(trait: UITraitCollection, containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSMapView; // inherited from UIAppearance
 
-	static appearanceWhenContainedIn(ContainerClass: typeof NSObject): GMSMapView; // inherited from UIAppearance
+    static appearanceWhenContainedIn(ContainerClass: typeof NSObject): GMSMapView; // inherited from UIAppearance
 
-	static appearanceWhenContainedInInstancesOfClasses(containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSMapView; // inherited from UIAppearance
+    static appearanceWhenContainedInInstancesOfClasses(containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSMapView; // inherited from UIAppearance
 
-	static mapWithFrameCamera(frame: CGRect, camera: GMSCameraPosition): GMSMapView;
+    static mapWithFrameCamera(frame: CGRect, camera: GMSCameraPosition): GMSMapView;
 
-	static new(): GMSMapView; // inherited from NSObject
+    static new(): GMSMapView; // inherited from NSObject
 
 	buildingsEnabled: boolean;
 
@@ -463,13 +463,13 @@ declare const enum GMSMapViewType {
 
 declare class GMSMarker extends GMSOverlay {
 
-	static alloc(): GMSMarker; // inherited from NSObject
+    static alloc(): GMSMarker; // inherited from NSObject
 
-	static markerImageWithColor(color: UIColor): UIImage;
+    static markerImageWithColor(color: UIColor): UIImage;
 
-	static markerWithPosition(position: CLLocationCoordinate2D): GMSMarker;
+    static markerWithPosition(position: CLLocationCoordinate2D): GMSMarker;
 
-	static new(): GMSMarker; // inherited from NSObject
+    static new(): GMSMarker; // inherited from NSObject
 
 	appearAnimation: GMSMarkerAnimation;
 
@@ -511,11 +511,11 @@ declare const enum GMSMarkerAnimation {
 
 declare class GMSMarkerLayer extends GMSOverlayLayer {
 
-	static alloc(): GMSMarkerLayer; // inherited from NSObject
+    static alloc(): GMSMarkerLayer; // inherited from NSObject
 
-	static layer(): GMSMarkerLayer; // inherited from CALayer
+    static layer(): GMSMarkerLayer; // inherited from CALayer
 
-	static new(): GMSMarkerLayer; // inherited from NSObject
+    static new(): GMSMarkerLayer; // inherited from NSObject
 
 	latitude: number;
 
@@ -526,17 +526,17 @@ declare class GMSMarkerLayer extends GMSOverlayLayer {
 
 declare class GMSMutableCameraPosition extends GMSCameraPosition {
 
-	static alloc(): GMSMutableCameraPosition; // inherited from NSObject
+    static alloc(): GMSMutableCameraPosition; // inherited from NSObject
 
-	static cameraWithLatitudeLongitudeZoom(latitude: number, longitude: number, zoom: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
+    static cameraWithLatitudeLongitudeZoom(latitude: number, longitude: number, zoom: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
 
-	static cameraWithLatitudeLongitudeZoomBearingViewingAngle(latitude: number, longitude: number, zoom: number, bearing: number, viewingAngle: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
+    static cameraWithLatitudeLongitudeZoomBearingViewingAngle(latitude: number, longitude: number, zoom: number, bearing: number, viewingAngle: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
 
-	static cameraWithTargetZoom(target: CLLocationCoordinate2D, zoom: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
+    static cameraWithTargetZoom(target: CLLocationCoordinate2D, zoom: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
 
-	static cameraWithTargetZoomBearingViewingAngle(target: CLLocationCoordinate2D, zoom: number, bearing: number, viewingAngle: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
+    static cameraWithTargetZoomBearingViewingAngle(target: CLLocationCoordinate2D, zoom: number, bearing: number, viewingAngle: number): GMSMutableCameraPosition; // inherited from GMSCameraPosition
 
-	static new(): GMSMutableCameraPosition; // inherited from NSObject
+    static new(): GMSMutableCameraPosition; // inherited from NSObject
 
 	bearing: number;
 
@@ -549,27 +549,27 @@ declare class GMSMutableCameraPosition extends GMSCameraPosition {
 
 declare class GMSMutablePath extends GMSPath {
 
-	static alloc(): GMSMutablePath; // inherited from NSObject
+    static alloc(): GMSMutablePath; // inherited from NSObject
 
-	static new(): GMSMutablePath; // inherited from NSObject
+    static new(): GMSMutablePath; // inherited from NSObject
 
-	static path(): GMSMutablePath; // inherited from GMSPath
+    static path(): GMSMutablePath; // inherited from GMSPath
 
-	static pathFromEncodedPath(encodedPath: string): GMSMutablePath; // inherited from GMSPath
+    static pathFromEncodedPath(encodedPath: string): GMSMutablePath; // inherited from GMSPath
 
-	addCoordinate(coord: CLLocationCoordinate2D): void;
+    addCoordinate(coord: CLLocationCoordinate2D): void;
 
-	addLatitudeLongitude(latitude: number, longitude: number): void;
+    addLatitudeLongitude(latitude: number, longitude: number): void;
 
-	insertCoordinateAtIndex(coord: CLLocationCoordinate2D, index: number): void;
+    insertCoordinateAtIndex(coord: CLLocationCoordinate2D, index: number): void;
 
-	removeAllCoordinates(): void;
+    removeAllCoordinates(): void;
 
-	removeCoordinateAtIndex(index: number): void;
+    removeCoordinateAtIndex(index: number): void;
 
-	removeLastCoordinate(): void;
+    removeLastCoordinate(): void;
 
-	replaceCoordinateAtIndexWithCoordinate(index: number, coord: CLLocationCoordinate2D): void;
+    replaceCoordinateAtIndexWithCoordinate(index: number, coord: CLLocationCoordinate2D): void;
 }
 
 interface GMSOrientation {
@@ -580,9 +580,9 @@ declare var GMSOrientation: interop.StructType<GMSOrientation>;
 
 declare class GMSOverlay extends NSObject implements NSCopying {
 
-	static alloc(): GMSOverlay; // inherited from NSObject
+    static alloc(): GMSOverlay; // inherited from NSObject
 
-	static new(): GMSOverlay; // inherited from NSObject
+    static new(): GMSOverlay; // inherited from NSObject
 
 	map: GMSMapView;
 
@@ -599,18 +599,18 @@ declare class GMSOverlay extends NSObject implements NSCopying {
 
 declare class GMSOverlayLayer extends CALayer {
 
-	static alloc(): GMSOverlayLayer; // inherited from NSObject
+    static alloc(): GMSOverlayLayer; // inherited from NSObject
 
-	static layer(): GMSOverlayLayer; // inherited from CALayer
+    static layer(): GMSOverlayLayer; // inherited from CALayer
 
-	static new(): GMSOverlayLayer; // inherited from NSObject
+    static new(): GMSOverlayLayer; // inherited from NSObject
 }
 
 declare class GMSPanorama extends NSObject {
 
-	static alloc(): GMSPanorama; // inherited from NSObject
+    static alloc(): GMSPanorama; // inherited from NSObject
 
-	static new(): GMSPanorama; // inherited from NSObject
+    static new(): GMSPanorama; // inherited from NSObject
 
 	readonly coordinate: CLLocationCoordinate2D;
 
@@ -621,17 +621,17 @@ declare class GMSPanorama extends NSObject {
 
 declare class GMSPanoramaCamera extends NSObject {
 
-	static alloc(): GMSPanoramaCamera; // inherited from NSObject
+    static alloc(): GMSPanoramaCamera; // inherited from NSObject
 
-	static cameraWithHeadingPitchZoom(heading: number, pitch: number, zoom: number): GMSPanoramaCamera;
+    static cameraWithHeadingPitchZoom(heading: number, pitch: number, zoom: number): GMSPanoramaCamera;
 
-	static cameraWithHeadingPitchZoomFOV(heading: number, pitch: number, zoom: number, FOV: number): GMSPanoramaCamera;
+    static cameraWithHeadingPitchZoomFOV(heading: number, pitch: number, zoom: number, FOV: number): GMSPanoramaCamera;
 
-	static cameraWithOrientationZoom(orientation: GMSOrientation, zoom: number): GMSPanoramaCamera;
+    static cameraWithOrientationZoom(orientation: GMSOrientation, zoom: number): GMSPanoramaCamera;
 
-	static cameraWithOrientationZoomFOV(orientation: GMSOrientation, zoom: number, FOV: number): GMSPanoramaCamera;
+    static cameraWithOrientationZoomFOV(orientation: GMSOrientation, zoom: number, FOV: number): GMSPanoramaCamera;
 
-	static new(): GMSPanoramaCamera; // inherited from NSObject
+    static new(): GMSPanoramaCamera; // inherited from NSObject
 
 	readonly FOV: number;
 
@@ -646,26 +646,26 @@ declare class GMSPanoramaCamera extends NSObject {
 
 declare class GMSPanoramaCameraUpdate extends NSObject {
 
-	static alloc(): GMSPanoramaCameraUpdate; // inherited from NSObject
+    static alloc(): GMSPanoramaCameraUpdate; // inherited from NSObject
 
-	static new(): GMSPanoramaCameraUpdate; // inherited from NSObject
+    static new(): GMSPanoramaCameraUpdate; // inherited from NSObject
 
-	static rotateBy(deltaHeading: number): GMSPanoramaCameraUpdate;
+    static rotateBy(deltaHeading: number): GMSPanoramaCameraUpdate;
 
-	static setHeading(heading: number): GMSPanoramaCameraUpdate;
+    static setHeading(heading: number): GMSPanoramaCameraUpdate;
 
-	static setPitch(pitch: number): GMSPanoramaCameraUpdate;
+    static setPitch(pitch: number): GMSPanoramaCameraUpdate;
 
-	static setZoom(zoom: number): GMSPanoramaCameraUpdate;
+    static setZoom(zoom: number): GMSPanoramaCameraUpdate;
 }
 
 declare class GMSPanoramaLayer extends GMSCALayer {
 
-	static alloc(): GMSPanoramaLayer; // inherited from NSObject
+    static alloc(): GMSPanoramaLayer; // inherited from NSObject
 
-	static layer(): GMSPanoramaLayer; // inherited from CALayer
+    static layer(): GMSPanoramaLayer; // inherited from CALayer
 
-	static new(): GMSPanoramaLayer; // inherited from NSObject
+    static new(): GMSPanoramaLayer; // inherited from NSObject
 
 	cameraFOV: number;
 
@@ -678,9 +678,9 @@ declare class GMSPanoramaLayer extends GMSCALayer {
 
 declare class GMSPanoramaLink extends NSObject {
 
-	static alloc(): GMSPanoramaLink; // inherited from NSObject
+    static alloc(): GMSPanoramaLink; // inherited from NSObject
 
-	static new(): GMSPanoramaLink; // inherited from NSObject
+    static new(): GMSPanoramaLink; // inherited from NSObject
 
 	heading: number;
 
@@ -689,19 +689,19 @@ declare class GMSPanoramaLink extends NSObject {
 
 declare class GMSPanoramaService extends NSObject {
 
-	static alloc(): GMSPanoramaService; // inherited from NSObject
+    static alloc(): GMSPanoramaService; // inherited from NSObject
 
-	static new(): GMSPanoramaService; // inherited from NSObject
+    static new(): GMSPanoramaService; // inherited from NSObject
 
-	requestPanoramaNearCoordinateCallback(coordinate: CLLocationCoordinate2D, callback: (p1: GMSPanorama, p2: NSError) => void): void;
+    requestPanoramaNearCoordinateCallback(coordinate: CLLocationCoordinate2D, callback: (p1: GMSPanorama, p2: NSError) => void): void;
 
-	requestPanoramaNearCoordinateRadiusCallback(coordinate: CLLocationCoordinate2D, radius: number, callback: (p1: GMSPanorama, p2: NSError) => void): void;
+    requestPanoramaNearCoordinateRadiusCallback(coordinate: CLLocationCoordinate2D, radius: number, callback: (p1: GMSPanorama, p2: NSError) => void): void;
 
-	requestPanoramaNearCoordinateRadiusSourceCallback(coordinate: CLLocationCoordinate2D, radius: number, source: GMSPanoramaSource, callback: (p1: GMSPanorama, p2: NSError) => void): void;
+    requestPanoramaNearCoordinateRadiusSourceCallback(coordinate: CLLocationCoordinate2D, radius: number, source: GMSPanoramaSource, callback: (p1: GMSPanorama, p2: NSError) => void): void;
 
-	requestPanoramaNearCoordinateSourceCallback(coordinate: CLLocationCoordinate2D, source: GMSPanoramaSource, callback: (p1: GMSPanorama, p2: NSError) => void): void;
+    requestPanoramaNearCoordinateSourceCallback(coordinate: CLLocationCoordinate2D, source: GMSPanoramaSource, callback: (p1: GMSPanorama, p2: NSError) => void): void;
 
-	requestPanoramaWithIDCallback(panoramaID: string, callback: (p1: GMSPanorama, p2: NSError) => void): void;
+    requestPanoramaWithIDCallback(panoramaID: string, callback: (p1: GMSPanorama, p2: NSError) => void): void;
 }
 
 declare const enum GMSPanoramaSource {
@@ -713,29 +713,29 @@ declare const enum GMSPanoramaSource {
 
 declare class GMSPanoramaView extends UIView {
 
-	static alloc(): GMSPanoramaView; // inherited from NSObject
+    static alloc(): GMSPanoramaView; // inherited from NSObject
 
-	static appearance(): GMSPanoramaView; // inherited from UIAppearance
+    static appearance(): GMSPanoramaView; // inherited from UIAppearance
 
-	static appearanceForTraitCollection(trait: UITraitCollection): GMSPanoramaView; // inherited from UIAppearance
+    static appearanceForTraitCollection(trait: UITraitCollection): GMSPanoramaView; // inherited from UIAppearance
 
-	static appearanceForTraitCollectionWhenContainedIn(trait: UITraitCollection, ContainerClass: typeof NSObject): GMSPanoramaView; // inherited from UIAppearance
+    static appearanceForTraitCollectionWhenContainedIn(trait: UITraitCollection, ContainerClass: typeof NSObject): GMSPanoramaView; // inherited from UIAppearance
 
-	static appearanceForTraitCollectionWhenContainedInInstancesOfClasses(trait: UITraitCollection, containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSPanoramaView; // inherited from UIAppearance
+    static appearanceForTraitCollectionWhenContainedInInstancesOfClasses(trait: UITraitCollection, containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSPanoramaView; // inherited from UIAppearance
 
-	static appearanceWhenContainedIn(ContainerClass: typeof NSObject): GMSPanoramaView; // inherited from UIAppearance
+    static appearanceWhenContainedIn(ContainerClass: typeof NSObject): GMSPanoramaView; // inherited from UIAppearance
 
-	static appearanceWhenContainedInInstancesOfClasses(containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSPanoramaView; // inherited from UIAppearance
+    static appearanceWhenContainedInInstancesOfClasses(containerTypes: NSArray<typeof NSObject> | typeof NSObject[]): GMSPanoramaView; // inherited from UIAppearance
 
-	static new(): GMSPanoramaView; // inherited from NSObject
+    static new(): GMSPanoramaView; // inherited from NSObject
 
-	static panoramaWithFrameNearCoordinate(frame: CGRect, coordinate: CLLocationCoordinate2D): GMSPanoramaView;
+    static panoramaWithFrameNearCoordinate(frame: CGRect, coordinate: CLLocationCoordinate2D): GMSPanoramaView;
 
-	static panoramaWithFrameNearCoordinateRadius(frame: CGRect, coordinate: CLLocationCoordinate2D, radius: number): GMSPanoramaView;
+    static panoramaWithFrameNearCoordinateRadius(frame: CGRect, coordinate: CLLocationCoordinate2D, radius: number): GMSPanoramaView;
 
-	static panoramaWithFrameNearCoordinateRadiusSource(frame: CGRect, coordinate: CLLocationCoordinate2D, radius: number, source: GMSPanoramaSource): GMSPanoramaView;
+    static panoramaWithFrameNearCoordinateRadiusSource(frame: CGRect, coordinate: CLLocationCoordinate2D, radius: number, source: GMSPanoramaSource): GMSPanoramaView;
 
-	static panoramaWithFrameNearCoordinateSource(frame: CGRect, coordinate: CLLocationCoordinate2D, source: GMSPanoramaSource): GMSPanoramaView;
+    static panoramaWithFrameNearCoordinateSource(frame: CGRect, coordinate: CLLocationCoordinate2D, source: GMSPanoramaSource): GMSPanoramaView;
 
 	camera: GMSPanoramaCamera;
 
@@ -805,42 +805,42 @@ declare var GMSPanoramaViewDelegate: {
 
 declare class GMSPath extends NSObject implements NSCopying, NSMutableCopying {
 
-	static alloc(): GMSPath; // inherited from NSObject
+    static alloc(): GMSPath; // inherited from NSObject
 
-	static new(): GMSPath; // inherited from NSObject
+    static new(): GMSPath; // inherited from NSObject
 
-	static path(): GMSPath;
+    static path(): GMSPath;
 
-	static pathFromEncodedPath(encodedPath: string): GMSPath;
+    static pathFromEncodedPath(encodedPath: string): GMSPath;
 
-	constructor(o: { path: GMSPath; });
+    constructor(o: { path: GMSPath; });
 
-	coordinateAtIndex(index: number): CLLocationCoordinate2D;
+    coordinateAtIndex(index: number): CLLocationCoordinate2D;
 
-	copyWithZone(zone: interop.Pointer | interop.Reference<any>): any;
+    copyWithZone(zone: interop.Pointer | interop.Reference<any>): any;
 
-	count(): number;
+    count(): number;
 
-	encodedPath(): string;
+    encodedPath(): string;
 
-	initWithPath(path: GMSPath): this;
+    initWithPath(path: GMSPath): this;
 
-	lengthOfKind(kind: GMSLengthKind): number;
+    lengthOfKind(kind: GMSLengthKind): number;
 
-	mutableCopyWithZone(zone: interop.Pointer | interop.Reference<any>): any;
+    mutableCopyWithZone(zone: interop.Pointer | interop.Reference<any>): any;
 
-	pathOffsetByLatitudeLongitude(deltaLatitude: number, deltaLongitude: number): this;
+    pathOffsetByLatitudeLongitude(deltaLatitude: number, deltaLongitude: number): this;
 
-	segmentsForLengthKind(length: number, kind: GMSLengthKind): number;
+    segmentsForLengthKind(length: number, kind: GMSLengthKind): number;
 }
 
 declare class GMSPolygon extends GMSOverlay {
 
-	static alloc(): GMSPolygon; // inherited from NSObject
+    static alloc(): GMSPolygon; // inherited from NSObject
 
-	static new(): GMSPolygon; // inherited from NSObject
+    static new(): GMSPolygon; // inherited from NSObject
 
-	static polygonWithPath(path: GMSPath): GMSPolygon;
+    static polygonWithPath(path: GMSPath): GMSPolygon;
 
 	fillColor: UIColor;
 
@@ -857,11 +857,11 @@ declare class GMSPolygon extends GMSOverlay {
 
 declare class GMSPolygonLayer extends GMSOverlayLayer {
 
-	static alloc(): GMSPolygonLayer; // inherited from NSObject
+    static alloc(): GMSPolygonLayer; // inherited from NSObject
 
-	static layer(): GMSPolygonLayer; // inherited from CALayer
+    static layer(): GMSPolygonLayer; // inherited from CALayer
 
-	static new(): GMSPolygonLayer; // inherited from NSObject
+    static new(): GMSPolygonLayer; // inherited from NSObject
 
 	fillColor: any;
 
@@ -872,11 +872,11 @@ declare class GMSPolygonLayer extends GMSOverlayLayer {
 
 declare class GMSPolyline extends GMSOverlay {
 
-	static alloc(): GMSPolyline; // inherited from NSObject
+    static alloc(): GMSPolyline; // inherited from NSObject
 
-	static new(): GMSPolyline; // inherited from NSObject
+    static new(): GMSPolyline; // inherited from NSObject
 
-	static polylineWithPath(path: GMSPath): GMSPolyline;
+    static polylineWithPath(path: GMSPath): GMSPolyline;
 
 	geodesic: boolean;
 
@@ -893,81 +893,81 @@ declare function GMSProject(coordinate: CLLocationCoordinate2D): GMSMapPoint;
 
 declare class GMSProjection extends NSObject {
 
-	static alloc(): GMSProjection; // inherited from NSObject
+    static alloc(): GMSProjection; // inherited from NSObject
 
-	static new(): GMSProjection; // inherited from NSObject
+    static new(): GMSProjection; // inherited from NSObject
 
-	containsCoordinate(coordinate: CLLocationCoordinate2D): boolean;
+    containsCoordinate(coordinate: CLLocationCoordinate2D): boolean;
 
-	coordinateForPoint(point: CGPoint): CLLocationCoordinate2D;
+    coordinateForPoint(point: CGPoint): CLLocationCoordinate2D;
 
-	pointForCoordinate(coordinate: CLLocationCoordinate2D): CGPoint;
+    pointForCoordinate(coordinate: CLLocationCoordinate2D): CGPoint;
 
-	pointsForMetersAtCoordinate(meters: number, coordinate: CLLocationCoordinate2D): number;
+    pointsForMetersAtCoordinate(meters: number, coordinate: CLLocationCoordinate2D): number;
 
-	visibleRegion(): GMSVisibleRegion;
+    visibleRegion(): GMSVisibleRegion;
 }
 
 declare class GMSReverseGeocodeResponse extends NSObject implements NSCopying {
 
-	static alloc(): GMSReverseGeocodeResponse; // inherited from NSObject
+    static alloc(): GMSReverseGeocodeResponse; // inherited from NSObject
 
-	static new(): GMSReverseGeocodeResponse; // inherited from NSObject
+    static new(): GMSReverseGeocodeResponse; // inherited from NSObject
 
-	copyWithZone(zone: interop.Pointer | interop.Reference<any>): any;
+    copyWithZone(zone: interop.Pointer | interop.Reference<any>): any;
 
-	firstResult(): GMSAddress;
+    firstResult(): GMSAddress;
 
-	results(): NSArray<GMSAddress>;
+    results(): NSArray<GMSAddress>;
 }
 
 declare class GMSServices extends NSObject {
 
-	static SDKLongVersion(): string;
+    static SDKLongVersion(): string;
 
-	static SDKVersion(): string;
+    static SDKVersion(): string;
 
-	static alloc(): GMSServices; // inherited from NSObject
+    static alloc(): GMSServices; // inherited from NSObject
 
-	static new(): GMSServices; // inherited from NSObject
+    static new(): GMSServices; // inherited from NSObject
 
-	static openSourceLicenseInfo(): string;
+    static openSourceLicenseInfo(): string;
 
-	static provideAPIKey(APIKey: string): boolean;
+    static provideAPIKey(APIKey: string): boolean;
 
-	static provideAPIOptions(APIOptions: NSArray<string> | string[]): boolean;
+    static provideAPIOptions(APIOptions: NSArray<string> | string[]): boolean;
 
-	static setAbnormalTerminationReportingEnabled(enabled: boolean): void;
+    static setAbnormalTerminationReportingEnabled(enabled: boolean): void;
 
-	static sharedServices(): NSObjectProtocol;
+    static sharedServices(): NSObjectProtocol;
 }
 
 declare class GMSStrokeStyle extends NSObject {
 
-	static alloc(): GMSStrokeStyle; // inherited from NSObject
+    static alloc(): GMSStrokeStyle; // inherited from NSObject
 
-	static gradientFromColorToColor(fromColor: UIColor, toColor: UIColor): GMSStrokeStyle;
+    static gradientFromColorToColor(fromColor: UIColor, toColor: UIColor): GMSStrokeStyle;
 
-	static new(): GMSStrokeStyle; // inherited from NSObject
+    static new(): GMSStrokeStyle; // inherited from NSObject
 
-	static solidColor(color: UIColor): GMSStrokeStyle;
+    static solidColor(color: UIColor): GMSStrokeStyle;
 }
 
 declare function GMSStyleHashForString(string: string): number;
 
 declare class GMSStyleSpan extends NSObject {
 
-	static alloc(): GMSStyleSpan; // inherited from NSObject
+    static alloc(): GMSStyleSpan; // inherited from NSObject
 
-	static new(): GMSStyleSpan; // inherited from NSObject
+    static new(): GMSStyleSpan; // inherited from NSObject
 
-	static spanWithColor(color: UIColor): GMSStyleSpan;
+    static spanWithColor(color: UIColor): GMSStyleSpan;
 
-	static spanWithColorSegments(color: UIColor, segments: number): GMSStyleSpan;
+    static spanWithColorSegments(color: UIColor, segments: number): GMSStyleSpan;
 
-	static spanWithStyle(style: GMSStrokeStyle): GMSStyleSpan;
+    static spanWithStyle(style: GMSStrokeStyle): GMSStyleSpan;
 
-	static spanWithStyleSegments(style: GMSStrokeStyle, segments: number): GMSStyleSpan;
+    static spanWithStyleSegments(style: GMSStrokeStyle, segments: number): GMSStyleSpan;
 
 	readonly segments: number;
 
@@ -980,18 +980,18 @@ declare function GMSStyleSpansOffset(path: GMSPath, styles: NSArray<GMSStrokeSty
 
 declare class GMSSyncTileLayer extends GMSTileLayer {
 
-	static alloc(): GMSSyncTileLayer; // inherited from NSObject
+    static alloc(): GMSSyncTileLayer; // inherited from NSObject
 
-	static new(): GMSSyncTileLayer; // inherited from NSObject
+    static new(): GMSSyncTileLayer; // inherited from NSObject
 
-	tileForXYZoom(x: number, y: number, zoom: number): UIImage;
+    tileForXYZoom(x: number, y: number, zoom: number): UIImage;
 }
 
 declare class GMSTileLayer extends NSObject {
 
-	static alloc(): GMSTileLayer; // inherited from NSObject
+    static alloc(): GMSTileLayer; // inherited from NSObject
 
-	static new(): GMSTileLayer; // inherited from NSObject
+    static new(): GMSTileLayer; // inherited from NSObject
 
 	fadeIn: boolean;
 
@@ -1019,9 +1019,9 @@ declare var GMSTileReceiver: {
 
 declare class GMSUISettings extends NSObject {
 
-	static alloc(): GMSUISettings; // inherited from NSObject
+    static alloc(): GMSUISettings; // inherited from NSObject
 
-	static new(): GMSUISettings; // inherited from NSObject
+    static new(): GMSUISettings; // inherited from NSObject
 
 	allowScrollGesturesDuringRotateOrZoom: boolean;
 
@@ -1046,11 +1046,11 @@ declare class GMSUISettings extends NSObject {
 
 declare class GMSURLTileLayer extends GMSTileLayer {
 
-	static alloc(): GMSURLTileLayer; // inherited from NSObject
+    static alloc(): GMSURLTileLayer; // inherited from NSObject
 
-	static new(): GMSURLTileLayer; // inherited from NSObject
+    static new(): GMSURLTileLayer; // inherited from NSObject
 
-	static tileLayerWithURLConstructor(constructor: (p1: number, p2: number, p3: number) => NSURL): GMSURLTileLayer;
+    static tileLayerWithURLConstructor(constructor: (p1: number, p2: number, p3: number) => NSURL): GMSURLTileLayer;
 
 	userAgent: string;
 }
@@ -1065,54 +1065,54 @@ interface GMSVisibleRegion {
 }
 declare var GMSVisibleRegion: interop.StructType<GMSVisibleRegion>;
 
-declare var kGMSAccessibilityCompass: string;
+declare let kGMSAccessibilityCompass: string;
 
-declare var kGMSAccessibilityMyLocation: string;
+declare let kGMSAccessibilityMyLocation: string;
 
-declare var kGMSEarthRadius: number;
+declare let kGMSEarthRadius: number;
 
-declare var kGMSEquatorProjectedMeter: number;
+declare let kGMSEquatorProjectedMeter: number;
 
-declare var kGMSGroundOverlayDefaultAnchor: CGPoint;
+declare let kGMSGroundOverlayDefaultAnchor: CGPoint;
 
-declare var kGMSLayerCameraBearingKey: string;
+declare let kGMSLayerCameraBearingKey: string;
 
-declare var kGMSLayerCameraLatitudeKey: string;
+declare let kGMSLayerCameraLatitudeKey: string;
 
-declare var kGMSLayerCameraLongitudeKey: string;
+declare let kGMSLayerCameraLongitudeKey: string;
 
-declare var kGMSLayerCameraViewingAngleKey: string;
+declare let kGMSLayerCameraViewingAngleKey: string;
 
-declare var kGMSLayerCameraZoomLevelKey: string;
+declare let kGMSLayerCameraZoomLevelKey: string;
 
-declare var kGMSLayerPanoramaFOVKey: string;
+declare let kGMSLayerPanoramaFOVKey: string;
 
-declare var kGMSLayerPanoramaHeadingKey: string;
+declare let kGMSLayerPanoramaHeadingKey: string;
 
-declare var kGMSLayerPanoramaPitchKey: string;
+declare let kGMSLayerPanoramaPitchKey: string;
 
-declare var kGMSLayerPanoramaZoomKey: string;
+declare let kGMSLayerPanoramaZoomKey: string;
 
-declare var kGMSMarkerDefaultGroundAnchor: CGPoint;
+declare let kGMSMarkerDefaultGroundAnchor: CGPoint;
 
-declare var kGMSMarkerDefaultInfoWindowAnchor: CGPoint;
+declare let kGMSMarkerDefaultInfoWindowAnchor: CGPoint;
 
-declare var kGMSMarkerLayerLatitude: string;
+declare let kGMSMarkerLayerLatitude: string;
 
-declare var kGMSMarkerLayerLongitude: string;
+declare let kGMSMarkerLayerLongitude: string;
 
-declare var kGMSMarkerLayerOpacity: string;
+declare let kGMSMarkerLayerOpacity: string;
 
-declare var kGMSMarkerLayerRotation: string;
+declare let kGMSMarkerLayerRotation: string;
 
-declare var kGMSMaxZoomLevel: number;
+declare let kGMSMaxZoomLevel: number;
 
-declare var kGMSMinZoomLevel: number;
+declare let kGMSMinZoomLevel: number;
 
-declare var kGMSPolygonLayerFillColor: string;
+declare let kGMSPolygonLayerFillColor: string;
 
-declare var kGMSPolygonLayerStrokeColor: string;
+declare let kGMSPolygonLayerStrokeColor: string;
 
-declare var kGMSPolygonLayerStrokeWidth: string;
+declare let kGMSPolygonLayerStrokeWidth: string;
 
-declare var kGMSTileLayerNoTile: UIImage;
+declare let kGMSTileLayerNoTile: UIImage;
