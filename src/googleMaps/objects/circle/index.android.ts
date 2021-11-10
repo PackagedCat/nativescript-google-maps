@@ -13,7 +13,7 @@ import { Color } from "@nativescript/core";
 import { Coordinate } from "../../models";
 
 export class Circle extends CircleBase {
-    public nativeMapObject: com.google.android.gms.maps.model.Circle;
+    public nativeObject: com.google.android.gms.maps.model.Circle;
 
     public initNativeObject(googleMap: com.google.android.gms.maps.GoogleMap) {
         const nativeOptions = new com.google.android.gms.maps.model.CircleOptions();
@@ -26,54 +26,54 @@ export class Circle extends CircleBase {
         nativeOptions.strokeWidth(this.strokeWidth);
         nativeOptions.visible(this.isVisible);
         nativeOptions.zIndex(this.zIndex);
-        this.nativeMapObject = googleMap.addCircle(nativeOptions);
+        this.nativeObject = googleMap.addCircle(nativeOptions);
     }
 
     public disposeNativeView() {
         this.parent.mapPromise.then(() => {
-            this.nativeMapObject.remove();
+            this.nativeObject.remove();
         });
     }
 
     [fillColorProperty.setNative](value: Color) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setFillColor(value.android);
+        if (this.nativeObject != null) {
+            this.nativeObject.setFillColor(value.android);
         }
     }
     
     [isTappableProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setClickable(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setClickable(value);
         }
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setVisible(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setVisible(value);
         }
     }
     
     [positionProperty.setNative](value: Coordinate) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setCenter(Converters.coordinateToNativeLatLng(value));
+        if (this.nativeObject != null) {
+            this.nativeObject.setCenter(Converters.coordinateToNativeLatLng(value));
         }
     }
 
     [strokeColorProperty.setNative](value: Color) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setStrokeColor(value.android);
+        if (this.nativeObject != null) {
+            this.nativeObject.setStrokeColor(value.android);
         }
     }
 
     [strokeWidthProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setStrokeWidth(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setStrokeWidth(value);
         }
     }
 
     [zIndexProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setZIndex(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setZIndex(value);
         }
     }
 }

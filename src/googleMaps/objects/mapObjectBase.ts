@@ -6,7 +6,7 @@ import { ImageAsset, ImageSource, Utils, ViewBase } from "@nativescript/core";
 export abstract class MapObjectBase extends ViewBase {
 	public parent: any;
 	
-    public abstract nativeMapObject: any;
+    public abstract nativeObject: any;
 
     /**
      * Get or sets any user data

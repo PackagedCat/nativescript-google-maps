@@ -17,31 +17,31 @@ import { Color } from "@nativescript/core";
 import { Coordinate, Point } from "../../models";
 
 export class Marker extends MarkerBase {
-    public nativeMapObject: GMSMarker;
+    public nativeObject: GMSMarker;
 
     public createNativeView() {
-        this.nativeMapObject = GMSMarker.new();
+        this.nativeObject = GMSMarker.new();
         return super.createNativeView();
     }
 
     public disposeNativeView() {
-        this.nativeMapObject.map = null;
+        this.nativeObject.map = null;
     }
 
     public initNativeObject(googleMap: GMSMapView) {
-        this.nativeMapObject.map = googleMap;
+        this.nativeObject.map = googleMap;
     }
     
     [anchorProperty.setNative](value: Point) {
-        this.nativeMapObject.groundAnchor = value;
+        this.nativeObject.groundAnchor = value;
     }
     
     [defaultIconColorProperty.setNative](value: Color) {
         if (this.icon == null) {
             if (value == null) {
-                this.nativeMapObject.icon = null;
+                this.nativeObject.icon = null;
             } else {
-                this.nativeMapObject.icon = GMSMarker.markerImageWithColor(value.ios);
+                this.nativeObject.icon = GMSMarker.markerImageWithColor(value.ios);
             }
         }
     }
@@ -54,45 +54,45 @@ export class Marker extends MarkerBase {
                 2, // Adjust this parameter for your needs
                 0
             );
-            this.nativeMapObject.icon = scaledIcon;
+            this.nativeObject.icon = scaledIcon;
         }}).catch((reason) => {
             throw reason;
         });
     }
     
     [isDraggableProperty.setNative](value: boolean) {
-        this.nativeMapObject.draggable = value;
+        this.nativeObject.draggable = value;
     }
     
     [isFlatProperty.setNative](value: boolean) {
-        this.nativeMapObject.flat = value;
+        this.nativeObject.flat = value;
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        this.nativeMapObject.map = value ? this.parent.nativeView : null;
+        this.nativeObject.map = value ? this.parent.nativeView : null;
     }
     
     [opacityProperty.setNative](value: number) {
-        this.nativeMapObject.opacity = value;
+        this.nativeObject.opacity = value;
     }
     
     [positionProperty.setNative](value: Coordinate) {
-        this.nativeMapObject.position = value;
+        this.nativeObject.position = value;
     }
     
     [rotationProperty.setNative](value: number) {
-        this.nativeMapObject.rotation = value;
+        this.nativeObject.rotation = value;
     }
     
     [snippetProperty.setNative](value: string) {
-        this.nativeMapObject.snippet = value;
+        this.nativeObject.snippet = value;
     }
     
     [titleProperty.setNative](value: string) {
-        this.nativeMapObject.title = value;
+        this.nativeObject.title = value;
     }
 
     [zIndexProperty.setNative](value: number) {
-        this.nativeMapObject.zIndex = value;
+        this.nativeObject.zIndex = value;
     }
 }

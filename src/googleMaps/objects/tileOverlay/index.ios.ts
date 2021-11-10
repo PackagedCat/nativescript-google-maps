@@ -38,19 +38,19 @@ class CustomGMSURLTileLayer extends GMSURLTileLayer {
 }
 
 export class TileOverlay extends TileOverlayBase {
-    public nativeMapObject: GMSTileLayer;
+    public nativeObject: GMSTileLayer;
 
     public createNativeView() {
-        this.nativeMapObject = CustomGMSURLTileLayer.initWithOwner(new WeakRef(this));
+        this.nativeObject = CustomGMSURLTileLayer.initWithOwner(new WeakRef(this));
         return super.createNativeView();
     }
 
     public disposeNativeView() {
-        this.nativeMapObject.map = null;
+        this.nativeObject.map = null;
     }
 
     public initNativeObject(googleMap: GMSMapView) {
-        this.nativeMapObject.map = googleMap;
+        this.nativeObject.map = googleMap;
     }
 
     public get tileProvider() {
@@ -59,22 +59,22 @@ export class TileOverlay extends TileOverlayBase {
 
     public set tileProvider(value) {
         this._tileProvider = value;
-        this.nativeMapObject.clearTileCache();
+        this.nativeObject.clearTileCache();
     }
 
     [isVisibleProperty.setNative](value: boolean) {
-        this.nativeMapObject.map = value ? this.parent.nativeView : null;
+        this.nativeObject.map = value ? this.parent.nativeView : null;
     }
     
     [opacityProperty.setNative](value: number) {
-        this.nativeMapObject.opacity = value;
+        this.nativeObject.opacity = value;
     }
 
     [sizeProperty.setNative](value: number) {
-        this.nativeMapObject.tileSize = value;
+        this.nativeObject.tileSize = value;
     }
 
     [zIndexProperty.setNative](value: number) {
-        this.nativeMapObject.zIndex = value;
+        this.nativeObject.zIndex = value;
     }
 }

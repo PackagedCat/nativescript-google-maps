@@ -15,7 +15,7 @@ import { Coordinate, CoordinateBounds } from "../../models";
 import * as Converters from "../../converters/converters.android";
 
 export class GroundOverlay extends GroundOverlayBase {
-    public nativeMapObject: com.google.android.gms.maps.model.GroundOverlay;
+    public nativeObject: com.google.android.gms.maps.model.GroundOverlay;
 
     public createNativeView() {
         if (this.image == null) {
@@ -63,7 +63,7 @@ export class GroundOverlay extends GroundOverlayBase {
                 }
             }
     
-            this.nativeMapObject = googleMap.addGroundOverlay(nativeOptions);
+            this.nativeObject = googleMap.addGroundOverlay(nativeOptions);
         }}).catch((reason) => {
             console.error("Google Map Ground Overlay: Failed to load image", reason);
         });
@@ -71,77 +71,77 @@ export class GroundOverlay extends GroundOverlayBase {
 
     public disposeNativeView() {
         this.parent.mapPromise.then(() => {
-            this.nativeMapObject.remove();
+            this.nativeObject.remove();
         });
     }
     
     [bearingProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setBearing(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setBearing(value);
         }
     }
 
     [boundsProperty.setNative](value: CoordinateBounds) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setPositionFromBounds(
+        if (this.nativeObject != null) {
+            this.nativeObject.setPositionFromBounds(
                 Converters.coordinateBoundsToNativeLatLngBounds(value));
         }
     }
     
     [dimensionsProperty.setNative](value: Size | number) {
-        if (this.nativeMapObject == null) {
+        if (this.nativeObject == null) {
             return;
         }
 
         if (typeof value === "number") {
-            this.nativeMapObject.setDimensions(value);
+            this.nativeObject.setDimensions(value);
         } else {
-            this.nativeMapObject.setDimensions(value.width, value.height);
+            this.nativeObject.setDimensions(value.width, value.height);
         }
     }
 
     [imageProperty.setNative](value: any) {
-        if (this.nativeMapObject == null) {
+        if (this.nativeObject == null) {
             return null;
         }
         
         const image = this._getImage(value);
         image.then((imageSource) => {
             const nativeImage = com.google.android.gms.maps.model.BitmapDescriptorFactory.fromBitmap(imageSource.android);
-            this.nativeMapObject.setImage(nativeImage);
+            this.nativeObject.setImage(nativeImage);
         }).catch((reason) => {
             console.error("GMapGroundOverlay: Failed to load image:", reason);
         });
     }
 
     [isVisibleProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setVisible(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setVisible(value);
         }
     }
     
     [isTappableProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setClickable(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setClickable(value);
         }
     }
     
     [opacityProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setTransparency(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setTransparency(value);
         }
     }
     
     [positionProperty.setNative](value: Coordinate) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setPosition(
+        if (this.nativeObject != null) {
+            this.nativeObject.setPosition(
                 Converters.coordinateToNativeLatLng(value));
         }
     }
 
     [zIndexProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setZIndex(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setZIndex(value);
         }
     }
 }

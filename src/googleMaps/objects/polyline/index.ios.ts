@@ -11,31 +11,31 @@ import { Color, zIndexProperty } from "@nativescript/core";
 import { Coordinate } from "../../models";
 
 export class Polyline extends PolylineBase {
-    public nativeMapObject: GMSPolyline;
+    public nativeObject: GMSPolyline;
 
     public createNativeView() {
-        this.nativeMapObject = GMSPolyline.new();
+        this.nativeObject = GMSPolyline.new();
         return super.createNativeView();
     }
 
     public disposeNativeView() {
-        this.nativeMapObject.map = null;
+        this.nativeObject.map = null;
     }
 
     protected initNativeObject(googleMap: GMSMapView) {
-        this.nativeMapObject.map = googleMap;
+        this.nativeObject.map = googleMap;
     }
 
     [isTappableProperty.setNative](value: boolean) {
-        this.nativeMapObject.tappable = value;
+        this.nativeObject.tappable = value;
     }
     
     [isGeodesicProperty.setNative](value: boolean) {
-        this.nativeMapObject.geodesic = value;
+        this.nativeObject.geodesic = value;
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        this.nativeMapObject.map = value ? this.parent.nativeView : null;
+        this.nativeObject.map = value ? this.parent.nativeView : null;
     }
 
     [pathProperty.setNative](value: Coordinate[]) {
@@ -44,18 +44,18 @@ export class Polyline extends PolylineBase {
             nativePath.addCoordinate(coordinate);
         }
 
-        this.nativeMapObject.path = nativePath;
+        this.nativeObject.path = nativePath;
     }
     
     [strokeColorProperty.setNative](value: Color) {
-        this.nativeMapObject.strokeColor = value.ios;
+        this.nativeObject.strokeColor = value.ios;
     }
     
     [strokeWidthProperty.setNative](value: number) {
-        this.nativeMapObject.strokeWidth = value;
+        this.nativeObject.strokeWidth = value;
     }
     
     [zIndexProperty.setNative](value: number) {
-        this.nativeMapObject.zIndex = value;
+        this.nativeObject.zIndex = value;
     }
 }

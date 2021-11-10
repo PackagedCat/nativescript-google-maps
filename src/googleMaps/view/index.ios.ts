@@ -32,7 +32,7 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         return handler;
     }
     
-    private mapObjectCallback(eventName, nativeMapObject) {
+    private mapObjectCallback(eventName, nativeObject) {
         const googleMap = this._owner.get();
         if (googleMap == null) {
             return;
@@ -41,7 +41,7 @@ class GoogleMapDelegateImpl extends NSObject implements GMSMapViewDelegate {
         googleMap.notify({
             eventName: eventName,
             object: googleMap,
-            mapObject: googleMap.getMapObjectByNative(nativeMapObject)
+            mapObject: googleMap.getMapObjectByNative(nativeObject)
         });
     }
     
@@ -207,10 +207,10 @@ export class GoogleMap extends GoogleMapBase {
         this._delegate = null;
     }
 
-    public getMapObjectByNative(nativeMapObject: any) {
+    public getMapObjectByNative(nativeObject: any) {
         for (let i = 0; i < this._mapObjects.length; i++) {
             const mapObject = this._mapObjects[i];
-            if (mapObject.nativeMapObject === nativeMapObject) {
+            if (mapObject.nativeObject === nativeObject) {
                 return mapObject;
             }
         }

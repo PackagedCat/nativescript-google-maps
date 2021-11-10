@@ -17,7 +17,7 @@ import { Color } from "@nativescript/core";
 import { Coordinate } from "../../models";
 
 export class Marker extends MarkerBase {
-    public nativeMapObject: com.google.android.gms.maps.model.Marker;
+    public nativeObject: com.google.android.gms.maps.model.Marker;
 
     public initNativeObject(googleMap: com.google.android.gms.maps.GoogleMap) {
         const nativeOptions = new com.google.android.gms.maps.model.MarkerOptions();
@@ -38,74 +38,74 @@ export class Marker extends MarkerBase {
             iconImage.then((imageSource) => {{
                 const nativeImage = com.google.android.gms.maps.model.BitmapDescriptorFactory.fromBitmap(imageSource.android);
                 nativeOptions.icon(nativeImage);
-                this.nativeMapObject = googleMap.addMarker(nativeOptions);
+                this.nativeObject = googleMap.addMarker(nativeOptions);
             }}).catch((reason) => {
                 console.error("Google Map Marker: Failed to load icon", reason);
             });
         } else {
-            this.nativeMapObject = googleMap.addMarker(nativeOptions);
+            this.nativeObject = googleMap.addMarker(nativeOptions);
         }
     }
 
     public disposeNativeView() {
         this.parent.mapPromise.then(() => {
-            this.nativeMapObject.remove();
+            this.nativeObject.remove();
         });
     }
     
     [defaultIconColorProperty.setNative](value: Color) {
-        if (this.nativeMapObject != null && this.icon == null) {
+        if (this.nativeObject != null && this.icon == null) {
             if (value == null) {
-                this.nativeMapObject.setIcon(
+                this.nativeObject.setIcon(
                     com.google.android.gms.maps.model.BitmapDescriptorFactory.defaultMarker());
             } else {
-                this.nativeMapObject.setIcon(
+                this.nativeObject.setIcon(
                     com.google.android.gms.maps.model.BitmapDescriptorFactory.defaultMarker(value.android));
             }
         }
     }
     
     [iconProperty.setNative](value: any) {
-        if (this.nativeMapObject == null) {
+        if (this.nativeObject == null) {
             return;
         }
 
         const iconImage = this._getImage(value);
         iconImage.then((imageSource) => {{
             const nativeIcon = com.google.android.gms.maps.model.BitmapDescriptorFactory.fromBitmap(imageSource.android);
-            this.nativeMapObject.setIcon(nativeIcon);
+            this.nativeObject.setIcon(nativeIcon);
         }}).catch((reason) => {
             throw reason;
         });
     }
     
     [isDraggableProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setDraggable(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setDraggable(value);
         }
     }
     
     [isFlatProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setFlat(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setFlat(value);
         }
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setVisible(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setVisible(value);
         }
     }
     
     [opacityProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setAlpha(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setAlpha(value);
         }
     }
     
     [positionProperty.setNative](value: Coordinate) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setPosition(Converters.coordinateToNativeLatLng({
+        if (this.nativeObject != null) {
+            this.nativeObject.setPosition(Converters.coordinateToNativeLatLng({
                 latitude: value.latitude,
                 longitude: value.longitude
             }));
@@ -113,26 +113,26 @@ export class Marker extends MarkerBase {
     }
     
     [rotationProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setRotation(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setRotation(value);
         }
     }
     
     [snippetProperty.setNative](value: string) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setSnippet(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setSnippet(value);
         }
     }
     
     [titleProperty.setNative](value: string) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setTitle(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setTitle(value);
         }
     }
 
     [zIndexProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setZIndex(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setZIndex(value);
         }
     }
 }

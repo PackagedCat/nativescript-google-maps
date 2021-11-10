@@ -13,7 +13,7 @@ import {
 import { Coordinate, CoordinateBounds } from "../../models";
 
 export class GroundOverlay extends GroundOverlayBase {
-    public nativeMapObject: GMSGroundOverlay;
+    public nativeObject: GMSGroundOverlay;
 
     public createNativeView() {
         if (this.image == null) {
@@ -31,34 +31,34 @@ export class GroundOverlay extends GroundOverlayBase {
         const image = this._getImage(this.image);
         image.then((imageSource) => {{
             if (this.bounds != null) {
-                this.nativeMapObject = GMSGroundOverlay.groundOverlayWithBoundsIcon(
+                this.nativeObject = GMSGroundOverlay.groundOverlayWithBoundsIcon(
                     GMSCoordinateBounds.alloc()
                         .initWithCoordinateCoordinate(
                             this.bounds.southwest,
                             this.bounds.northeast),
                     imageSource.ios);
             } else {
-                this.nativeMapObject = GMSGroundOverlay.groundOverlayWithPositionIconZoomLevel(
+                this.nativeObject = GMSGroundOverlay.groundOverlayWithPositionIconZoomLevel(
                     this.position as Coordinate,
                     imageSource.ios,
                     0);
             }
-            this.nativeMapObject.map = googleMap;
+            this.nativeObject.map = googleMap;
         }}).catch((reason) => {
             throw reason;
         });
     }
 
     public disposeNativeView() {
-        this.nativeMapObject.map = null;
+        this.nativeObject.map = null;
     }
     
     [bearingProperty.setNative](value: number) {
-        this.nativeMapObject.bearing = value;
+        this.nativeObject.bearing = value;
     }
         
     [boundsProperty.setNative](value: CoordinateBounds) {
-        this.nativeMapObject.bounds = GMSCoordinateBounds.alloc()
+        this.nativeObject.bounds = GMSCoordinateBounds.alloc()
             .initWithCoordinateCoordinate(
                 value.southwest,
                 value.northeast);
@@ -66,39 +66,39 @@ export class GroundOverlay extends GroundOverlayBase {
     
     [dimensionsProperty.setNative]() {
         // if (typeof value === "number") {
-        //     this.nativeMapObject.setDimensions(value);
+        //     this.nativeObject.setDimensions(value);
         // } else {
-        //     this.nativeMapObject.setDimensions(value.width, value.height);
+        //     this.nativeObject.setDimensions(value.width, value.height);
         // }
-        // this.nativeMapObject.
+        // this.nativeObject.
     }
 
     [imageProperty.setNative](value: any) {        
         const image = this._getImage(value);
         image.then((imageSource) => {
-            this.nativeMapObject.icon = imageSource.ios;
+            this.nativeObject.icon = imageSource.ios;
         }).catch((reason) => {
             console.error("GMapGroundOverlay: Failed to load image:", reason);
         });
     }
 
     [isVisibleProperty.setNative](value: boolean) {
-        this.nativeMapObject.map = value ? this.parent.nativeView : null;
+        this.nativeObject.map = value ? this.parent.nativeView : null;
     }
     
     [isTappableProperty.setNative](value: boolean) {
-        this.nativeMapObject.tappable = value;
+        this.nativeObject.tappable = value;
     }
     
     [opacityProperty.setNative](value: number) {
-        this.nativeMapObject.opacity = value;
+        this.nativeObject.opacity = value;
     }
     
     [positionProperty.setNative](value: Coordinate) {
-        this.nativeMapObject.position = value as Coordinate;
+        this.nativeObject.position = value as Coordinate;
     }
 
     [zIndexProperty.setNative](value: number) {
-        this.nativeMapObject.zIndex = value;
+        this.nativeObject.zIndex = value;
     }
 }

@@ -36,7 +36,7 @@ class UrlTileProviderImpl extends com.google.android.gms.maps.model.UrlTileProvi
 }
 
 export class TileOverlay extends TileOverlayBase {
-    public nativeMapObject: com.google.android.gms.maps.model.TileOverlay;
+    public nativeObject: com.google.android.gms.maps.model.TileOverlay;
 
     public initNativeObject(googleMap: com.google.android.gms.maps.GoogleMap) {
         if (this.tileProvider == null) {
@@ -48,12 +48,12 @@ export class TileOverlay extends TileOverlayBase {
         nativeOptions.transparency(1 - this.opacity);
         nativeOptions.visible(this.isVisible);
         nativeOptions.zIndex(this.zIndex);
-        this.nativeMapObject = googleMap.addTileOverlay(nativeOptions);
+        this.nativeObject = googleMap.addTileOverlay(nativeOptions);
     }
 
     public disposeNativeView() {
         this.parent.mapPromise.then(() => {
-            this.nativeMapObject.remove();
+            this.nativeObject.remove();
         });
     }
 
@@ -63,26 +63,26 @@ export class TileOverlay extends TileOverlayBase {
 
     public set tileProvider(value) {
         this._tileProvider = value;
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.clearTileCache();
+        if (this.nativeObject != null) {
+            this.nativeObject.clearTileCache();
         }
     }
 
     [isVisibleProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setVisible(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setVisible(value);
         }
     }
     
     [opacityProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setTransparency(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setTransparency(value);
         }
     }
 
     [zIndexProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setZIndex(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setZIndex(value);
         }
     }
 }

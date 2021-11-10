@@ -145,11 +145,11 @@ export class GoogleMap extends GoogleMapBase {
             });
         }).bind(this);
 
-        const mapObjectCallback = ((eventName, nativeMapObject) => {
+        const mapObjectCallback = ((eventName, nativeObject) => {
             this.notify<MapObjectEventData<MapObjectBase>>({
                 eventName: eventName,
                 object: this,
-                mapObject: this.getMapObjectByNative(nativeMapObject)
+                mapObject: this.getMapObjectByNative(nativeObject)
             });
         }).bind(this);
 
@@ -167,12 +167,12 @@ export class GoogleMap extends GoogleMapBase {
 
         googleMap.setOnCircleClickListener(
             new com.google.android.gms.maps.GoogleMap.OnCircleClickListener({
-                onCircleClick: (nativeMapObject) => { mapObjectCallback(GoogleMap.circleTapEvent, nativeMapObject);}
+                onCircleClick: (nativeObject) => { mapObjectCallback(GoogleMap.circleTapEvent, nativeObject);}
             }));
 
         googleMap.setOnGroundOverlayClickListener(
             new com.google.android.gms.maps.GoogleMap.OnGroundOverlayClickListener({
-                onGroundOverlayClick: (nativeMapObject) => { mapObjectCallback(GoogleMap.groundOverlayTapEvent, nativeMapObject);}
+                onGroundOverlayClick: (nativeObject) => { mapObjectCallback(GoogleMap.groundOverlayTapEvent, nativeObject);}
             }));
 
         // TODO: setOnIndoorStateChangeListener
@@ -199,8 +199,8 @@ export class GoogleMap extends GoogleMapBase {
         }));
 
         googleMap.setOnMarkerClickListener(new com.google.android.gms.maps.GoogleMap.OnMarkerClickListener({
-            onMarkerClick: (nativeMapObject) => {
-                const marker = this.getMapObjectByNative(nativeMapObject) as any;
+            onMarkerClick: (nativeObject) => {
+                const marker = this.getMapObjectByNative(nativeObject) as any;
                 this.notify({
                     eventName: GoogleMap.markerTapEvent,
                     object: this,
@@ -211,9 +211,9 @@ export class GoogleMap extends GoogleMapBase {
         }));
 
         googleMap.setOnMarkerDragListener(new com.google.android.gms.maps.GoogleMap.OnMarkerDragListener({
-            onMarkerDrag: (nativeMapObject) => mapObjectCallback(GoogleMap.markerDragStartEvent, nativeMapObject),
-            onMarkerDragEnd: (nativeMapObject) => mapObjectCallback(GoogleMap.markerDragStartEvent, nativeMapObject),
-            onMarkerDragStart: (nativeMapObject) => mapObjectCallback(GoogleMap.markerDragEndEvent, nativeMapObject)
+            onMarkerDrag: (nativeObject) => mapObjectCallback(GoogleMap.markerDragStartEvent, nativeObject),
+            onMarkerDragEnd: (nativeObject) => mapObjectCallback(GoogleMap.markerDragStartEvent, nativeObject),
+            onMarkerDragStart: (nativeObject) => mapObjectCallback(GoogleMap.markerDragEndEvent, nativeObject)
         }));
 
         googleMap.setOnMyLocationButtonClickListener(new com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener({
@@ -246,20 +246,20 @@ export class GoogleMap extends GoogleMapBase {
         }));
 
         googleMap.setOnPolygonClickListener(new com.google.android.gms.maps.GoogleMap.OnPolygonClickListener({
-            onPolygonClick: (nativeMapObject) => mapObjectCallback(GoogleMap.polygonTapEvent, nativeMapObject)
+            onPolygonClick: (nativeObject) => mapObjectCallback(GoogleMap.polygonTapEvent, nativeObject)
         }));
 
         googleMap.setOnPolylineClickListener(new com.google.android.gms.maps.GoogleMap.OnPolylineClickListener({
-            onPolylineClick: (nativeMapObject) => mapObjectCallback(GoogleMap.polylineTapEvent, nativeMapObject)
+            onPolylineClick: (nativeObject) => mapObjectCallback(GoogleMap.polylineTapEvent, nativeObject)
         }));
     }
 
-    private getMapObjectByNative(nativeMapObject: any) {
-        const nativeMapObjectId = nativeMapObject.getId();
+    private getMapObjectByNative(nativeObject: any) {
+        const nativeObjectId = nativeObject.getId();
 
         for (let i = 0; i < this._mapObjects.length; i++) {
             const mapObject = this._mapObjects[i];
-            if (mapObject.nativeMapObject != null && mapObject.nativeMapObject.getId() === nativeMapObjectId) {
+            if (mapObject.nativeObject != null && mapObject.nativeObject.getId() === nativeObjectId) {
                 return mapObject;
             }
         }

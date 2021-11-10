@@ -12,7 +12,7 @@ import { Color, zIndexProperty } from "@nativescript/core";
 import { Coordinate } from "../../models";
 
 export class Polyline extends PolylineBase {
-    public nativeMapObject: com.google.android.gms.maps.model.Polyline;
+    public nativeObject: com.google.android.gms.maps.model.Polyline;
 
     protected initNativeObject(googleMap: com.google.android.gms.maps.GoogleMap) {
         const nativeOptions = new com.google.android.gms.maps.model.PolylineOptions();
@@ -30,12 +30,12 @@ export class Polyline extends PolylineBase {
         }
         nativeOptions.addAll(java.util.Arrays.asList(nativeLatLngs));
 
-        this.nativeMapObject = googleMap.addPolyline(nativeOptions);
+        this.nativeObject = googleMap.addPolyline(nativeOptions);
     }
 
     public disposeNativeView() {
         this.parent.mapPromise.then(() => {
-            this.nativeMapObject.remove();
+            this.nativeObject.remove();
         });
     }
 
@@ -44,49 +44,49 @@ export class Polyline extends PolylineBase {
     // TODO: Implement pattern property
 
     [isTappableProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setClickable(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setClickable(value);
         }
     }
     
     [isGeodesicProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setGeodesic(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setGeodesic(value);
         }
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setVisible(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setVisible(value);
         }
     }
 
     [pathProperty.setNative](value: Coordinate[]) {
-        if (this.nativeMapObject != null) {
+        if (this.nativeObject != null) {
             const nativeLatLngs = new Array<com.google.android.gms.maps.model.LatLng>();
             for (const coordinate of value) {
                 nativeLatLngs.push(Converters.coordinateToNativeLatLng(coordinate));
             }
 
-            this.nativeMapObject.setPoints(java.util.Arrays.asList(nativeLatLngs));
+            this.nativeObject.setPoints(java.util.Arrays.asList(nativeLatLngs));
         }
     }
     
     [strokeColorProperty.setNative](value: Color) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setColor(value.android);
+        if (this.nativeObject != null) {
+            this.nativeObject.setColor(value.android);
         }
     }
     
     [strokeWidthProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setWidth(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setWidth(value);
         }
     }
     
     [zIndexProperty.setNative](value: number) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.setZIndex(value);
+        if (this.nativeObject != null) {
+            this.nativeObject.setZIndex(value);
         }
     }
 }

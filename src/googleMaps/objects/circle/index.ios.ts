@@ -12,41 +12,41 @@ import { Color } from "@nativescript/core";
 import { Coordinate } from "../../models";
 
 export class Circle extends CircleBase {
-    public nativeMapObject: GMSCircle;
+    public nativeObject: GMSCircle;
 
     public initNativeObject(googleMap: GMSMapView) {
-        this.nativeMapObject.map = googleMap;
+        this.nativeObject.map = googleMap;
     }
 
     public disposeNativeView() {
-        this.nativeMapObject.map = null;
+        this.nativeObject.map = null;
     }
 
     [fillColorProperty.setNative](value: Color) {
-        this.nativeMapObject.fillColor = value.ios;
+        this.nativeObject.fillColor = value.ios;
     }
     
     [isTappableProperty.setNative](value: boolean) {
-        this.nativeMapObject.tappable = value;
+        this.nativeObject.tappable = value;
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        this.nativeMapObject.map = value ? this.parent.nativeView : null;
+        this.nativeObject.map = value ? this.parent.nativeView : null;
     }
     
     [positionProperty.setNative](value: Coordinate) {
-        this.nativeMapObject.position = value;
+        this.nativeObject.position = value;
     }
 
     [strokeColorProperty.setNative](value: Color) {
-        this.nativeMapObject.strokeColor = value.ios;
+        this.nativeObject.strokeColor = value.ios;
     }
 
     [strokeWidthProperty.setNative](value: number) {
-        this.nativeMapObject.strokeWidth = value;
+        this.nativeObject.strokeWidth = value;
     }
 
     [zIndexProperty.setNative](value: number) {
-        this.nativeMapObject.zIndex = value;
+        this.nativeObject.zIndex = value;
     }
 }

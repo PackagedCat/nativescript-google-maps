@@ -13,23 +13,23 @@ import { Color, zIndexProperty } from "@nativescript/core";
 import { Coordinate } from "../../models";
 
 export class Polygon extends PolygonBase {
-    public nativeMapObject: GMSPolygon;
+    public nativeObject: GMSPolygon;
 
     public createNativeView() {
-        this.nativeMapObject = GMSPolygon.new();
+        this.nativeObject = GMSPolygon.new();
         return super.createNativeView();
     }
 
     public disposeNativeView() {
-        this.nativeMapObject.map = null;
+        this.nativeObject.map = null;
     }
 
     protected initNativeObject(googleMap: GMSMapView) {
-        this.nativeMapObject.map = googleMap;
+        this.nativeObject.map = googleMap;
     }
     
     [fillColorProperty.setNative](value: Color) {
-        this.nativeMapObject.fillColor = value.ios;
+        this.nativeObject.fillColor = value.ios;
     }
 
     [holesProperty.setNative](value: Coordinate[][]) {
@@ -42,19 +42,19 @@ export class Polygon extends PolygonBase {
             holes.push(nativePath);
         }
 
-        this.nativeMapObject.holes = NSArray.arrayWithArray(holes);
+        this.nativeObject.holes = NSArray.arrayWithArray(holes);
     }
     
     [isGeodesicProperty.setNative](value: boolean) {
-        this.nativeMapObject.geodesic = value;
+        this.nativeObject.geodesic = value;
     }
 
     [isTappableProperty.setNative](value: boolean) {
-        this.nativeMapObject.tappable = value;
+        this.nativeObject.tappable = value;
     }
     
     [isVisibleProperty.setNative](value: boolean) {
-        this.nativeMapObject.map = value ? this.parent.nativeView : null;
+        this.nativeObject.map = value ? this.parent.nativeView : null;
     }
 
     [pathProperty.setNative](value: Coordinate[]) {
@@ -63,20 +63,18 @@ export class Polygon extends PolygonBase {
             nativePath.addCoordinate(coordinate);
         }
 
-        this.nativeMapObject.path = nativePath;
+        this.nativeObject.path = nativePath;
     }
 
     [strokeColorProperty.setNative](value: Color) {
-        if (this.nativeMapObject != null) {
-            this.nativeMapObject.strokeColor = value.ios;
-        }
+        this.nativeObject.strokeColor = value.ios;
     }
 
     [strokeWidthProperty.setNative](value: number) {
-        this.nativeMapObject.strokeWidth = value;
+        this.nativeObject.strokeWidth = value;
     }
     
     [zIndexProperty.setNative](value: number) {
-        this.nativeMapObject.zIndex = value;
+        this.nativeObject.zIndex = value;
     }
 }
