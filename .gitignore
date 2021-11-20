@@ -1,17 +1,34 @@
-.vscode
-.idea
-.DS_Store
-*.esm.json
-*.js
-*.js.map
-*.log
-*.aar
-*.tsbuildinfo
-src/*.d.ts
+# NativeScript
+hooks/
+node_modules/
+demos/**/platforms/
+
+# Package
+packages/**/*.js
+packages/**/*.js.map
 packages/**/*.d.ts
-!src/index.d.ts
-!src/references.d.ts
-!src/scripts/*.js
-!demos/**/*.js
-demos/**/platforms
-node_modules
+packages/**/*.tsbuildinfo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+.idea
+.cloud
+.project
+tmp/
+typings/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
