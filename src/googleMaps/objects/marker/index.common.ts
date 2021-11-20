@@ -63,7 +63,7 @@ export abstract class MarkerBase extends MapObjectBase {
 	 * If false the camera to move to the marker and an info window to appear.
 	 * Default false.
      */
-	public preventDefaultBehavior : boolean;
+	public preventDefaultBehavior: boolean;
 	
 	/** 
 	 * Gets or sets the rotation of the marker in degrees clockwise about the marker's anchor point.

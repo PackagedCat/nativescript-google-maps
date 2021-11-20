@@ -12,12 +12,6 @@ packages/**/*.d.ts
 !src/index.d.ts
 !src/references.d.ts
 !src/scripts/*.js
-!demo-vue/**/*.js
-demo-vue/*.d.ts
-!demo-vue/references.d.ts
-demo-vue/lib
-demo-vue/platforms
+!demos/**/*.js
+demos/**/platforms
 node_modules
-demo-vue/report/report.html
-demo-vue/report/stats.json
-!demo-vue-vue/app/app.js

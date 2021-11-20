@@ -14,7 +14,7 @@ import {
     mapStyleProperty,
     CameraPosition
 } from "./index.common";
-import { PointOfInterest } from "../models";
+import { PointOfInterest } from "../objects";
 import { Projection } from "../projection";
 
 export * from "./index.common";

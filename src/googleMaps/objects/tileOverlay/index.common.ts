@@ -13,7 +13,7 @@ export abstract class TileOverlayBase extends MapObjectBase {
     public isVisible: boolean;
     
     /**
-     * Sets the opacity of this ground overlay.
+     * Sets the opacity of this tile overlay.
      */
     public opacity: number;
 
@@ -34,7 +34,7 @@ export abstract class TileOverlayBase extends MapObjectBase {
      public size: number
 
     /**
-     * Gets or sets the zIndex of this ground overlay.
+     * Gets or sets the zIndex of this tile overlay.
      */
     public zIndex: number;
 }

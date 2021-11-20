@@ -27,7 +27,7 @@ export abstract class MapObjectBase extends ViewBase {
 
     protected abstract initNativeObject(googleMap?: any);
     
-    public _getImage(value: string | ImageSource | ImageAsset): Promise<ImageSource> {
+    protected _getImage(value: string | ImageSource | ImageAsset): Promise<ImageSource> {
         if (typeof value === "string" || value instanceof String) {
             value = value.trim();
 

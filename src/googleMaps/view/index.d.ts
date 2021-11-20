@@ -1,10 +1,7 @@
 import { EventData, GestureTypes } from "@nativescript/core";
 import { Projection } from "../projection";
-import { Marker } from "../MapObjects/Marker";
-import { Circle } from "../Circle";
-import { Polygon } from "../Polygon";
-import { Polyline } from "../Polyline";
-import { GroundOverlay } from "../GroundOverlay";
+import { Circle, Marker, PointOfInterest, Polygon, Polyline, GroundOverlay } from "../objects";
+import { Coordinate } from "../models";
 
 /**
  * Represent a aggregates all camera position parameters such as location, zoom level, tilt angle, and bearing.

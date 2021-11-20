@@ -1,7 +1,13 @@
 import { Color } from "@nativescript/core";
 import { Coordinate } from "../../models";
+import { PolylineBase } from "./index.common";
 
-export class Polyline {	
+export class Polyline extends PolylineBase {
+    nativeObject: any;
+    protected initNativeObject(googleMap?: any);
+}
+
+export interface PolylineOptions {	
 	/**
 	 * Gets or sets whether to draw each segment of the line as a geodesic or not.
 	 * 
@@ -11,17 +17,17 @@ export class Polyline {
 	 * path between two points on the Earth's surface. The geodesic curve is constructed
 	 * assuming the Earth is a sphere.
 	 */
-	public isGeodesic: boolean;
+	isGeodesic?: boolean;
 
 	/**
      * Gets or sets the tappability of the polyline.
      */
-	public isTappable: boolean;
+	isTappable?: boolean;
 
 	/**
 	 * Gets or sets the visibility of the polyline.
 	 */
-	public isVisible: boolean;
+	isVisible?: boolean;
 
 	/**
 	 * Gets or sets the path of the polyline.
@@ -31,12 +37,12 @@ export class Polyline {
 	 * A polyline is not closed by default; to form a closed polyline,
 	 * the start and end points must be the same.
 	 */
-	public path: Coordinate[];
+	path: Coordinate[];
 
 	/**
 	 * Gets or sets the stroke color of the polyline.
 	 */
-	public strokeColor: Color;
+	strokeColor?: Color;
 
 	/**
 	 * Gets or sets the stroke width of the polyline.
@@ -46,10 +52,10 @@ export class Polyline {
 	 * The width is constant and independent of the camera's zoom level.
 	 * The default value is 10.
 	 */
-	public strokeWidth: number;
+	strokeWidth?: number;
 
 	/**
 	 * Gets or sets the zIndex of the polyline.
 	 */
-	public zIndex: number;
+	zIndex?: number;
 }

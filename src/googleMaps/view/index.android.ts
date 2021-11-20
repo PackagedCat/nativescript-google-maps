@@ -18,8 +18,8 @@ import {
     CameraPosition
 } from "./index.common";
 import * as Converters from "../converters/converters.android";
-import { PointOfInterest } from "../models";
 import { Projection } from "../projection";
+import { PointOfInterest } from "../objects";
 import { MapObjectBase } from "../objects/mapObjectBase";
 import { nativeLatLngToCoordinate } from "../converters/converters.android";
 

@@ -7,11 +7,11 @@ import {
 } from "./index.common";
 
 @NativeClass
-class CustomGMSURLTileLayer extends GMSURLTileLayer {
+class CustomGMSTileLayer extends GMSTileLayer {
     private _onwer: WeakRef<TileOverlay>;
 
     public static initWithOwner(onwer: WeakRef<TileOverlay>) {
-        const urlTileProvider = <CustomGMSURLTileLayer>CustomGMSURLTileLayer.new();
+        const urlTileProvider = <CustomGMSTileLayer>CustomGMSTileLayer.new();
         urlTileProvider._onwer = onwer;
         return urlTileProvider;
     }
@@ -28,12 +28,12 @@ class CustomGMSURLTileLayer extends GMSURLTileLayer {
             receiver.receiveTileWithXYZoomImage(x, y, zoom, null);
         }
         
-        onwer._getImage(url)
-            .then((imageSource) => {
-                receiver.receiveTileWithXYZoomImage(x, y, zoom, imageSource.ios);
-            }).catch(() => {
-                receiver.receiveTileWithXYZoomImage(x, y, zoom, null);
-            });
+        // onwer._getImage(url)
+        //     .then((imageSource) => {
+        //         receiver.receiveTileWithXYZoomImage(x, y, zoom, imageSource.ios);
+        //     }).catch(() => {
+        //         receiver.receiveTileWithXYZoomImage(x, y, zoom, null);
+        //     });
     }
 }
 
@@ -41,7 +41,7 @@ export class TileOverlay extends TileOverlayBase {
     public nativeObject: GMSTileLayer;
 
     public createNativeView() {
-        this.nativeObject = CustomGMSURLTileLayer.initWithOwner(new WeakRef(this));
+        this.nativeObject = CustomGMSTileLayer.initWithOwner(new WeakRef(this));
         return super.createNativeView();
     }
 
