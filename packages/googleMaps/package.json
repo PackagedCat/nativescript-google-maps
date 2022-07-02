@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-gmaps",
-	"version": "8.0.2",
+	"version": "8.0.3",
 	"description": "Google Maps for NativeScript",
 	"main": "index",
 	"typings": "index.d.ts",
